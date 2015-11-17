@@ -1,2 +1,2 @@
-# add-banner-to-article
+# add-banner-to-post
 WordPress プラグインです。
