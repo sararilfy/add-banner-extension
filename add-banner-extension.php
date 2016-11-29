@@ -12,31 +12,80 @@ Domain Path: /languages
 new add_Banner_Extension();
 
 class add_Banner_Extension {
+
+	/**
+	 * Version Information.
+	 *
+	 * @var string
+	 */
+	private $version = '1.0.0';
+
 	/**
 	 * Constructor Define.
 	 *
 	 * @version 1.0.0
-	 * @since 1.0.0
+	 * @since   1.0.0
 	 */
 	public function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 	}
 
 	/**
-	 * Admin menu.
+	 * admin_init.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
 	 */
-	public function admin_menu (){
-		add_menu_page(
+	public function admin_init () {
+		wp_register_style( 'add-banner-extension-admin-style', plugins_url( 'css/style.css', __FILE__ ), array(), $this->version );
+	}
+
+	/**
+	 * Admin menu.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function admin_menu () {
+		$list_page1 = add_menu_page(
 			'Add Banner Extension',
 			'Add Banner',
 			'manage_options',
 			'my-page',
-			array( $this, 'test' ),
+			array( $this, 'list_page_render' ),
 			'dashicons-admin-media'
 		);
+		$list_page = add_submenu_page(
+			__FILE__,
+			'All Settings',
+			'All Settings',
+			'manage_options',
+			plugin_basename( __FILE__ ),
+			array( $this, 'list_page_render' )
+		);
+
+		add_action( 'admin_print_styles-' . $list_page1, array( $this, 'add_style' ) );
 	}
 
-	public function test () {
-		echo "include_once('xxxx.php')";
+	/**
+	 * Admin List Page Template Require.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function list_page_render () {
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-list.php' );
+		new add_Banner_Extension_Admin_List();
+	}
+
+	/**
+	 * Admin CSS Add.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function add_style () {
+		wp_enqueue_style( 'add-banner-extension-admin-style' );
 	}
 }
