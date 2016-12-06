@@ -48,11 +48,11 @@ class add_Banner_Extension {
 	 * @since   1.0.0
 	 */
 	public function admin_menu () {
-		$list_page1 = add_menu_page(
+		add_menu_page(
 			'Add Banner Extension',
 			'Add Banner',
 			'manage_options',
-			'my-page',
+			plugin_basename( __FILE__ ),
 			array( $this, 'list_page_render' ),
 			'dashicons-admin-media'
 		);
@@ -64,8 +64,16 @@ class add_Banner_Extension {
 			plugin_basename( __FILE__ ),
 			array( $this, 'list_page_render' )
 		);
+		$post_page = add_submenu_page(
+			__FILE__,
+			'Add New',
+			'Add New',
+			'manage_options',
+			plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-post.php',
+			array( $this, 'post_page_render' )
+		);
 
-		add_action( 'admin_print_styles-' . $list_page1, array( $this, 'add_style' ) );
+		//add_action( 'admin_print_styles-' . $list_page1, array( $this, 'add_style' ) );
 	}
 
 	/**
@@ -77,6 +85,17 @@ class add_Banner_Extension {
 	public function list_page_render () {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-list.php' );
 		new add_Banner_Extension_Admin_List();
+	}
+
+	/**
+	 * Admin Post Page Template Require.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function post_page_render () {
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-post.php' );
+		new add_Banner_Extension_Admin_Post();
 	}
 
 	/**
