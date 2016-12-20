@@ -9,6 +9,7 @@ License: GPLv2 or later
 Text Domain: add-banner-extension
 Domain Path: /languages
 */
+require_once ( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-db.php');
 new add_Banner_Extension();
 
 class add_Banner_Extension {
@@ -27,8 +28,20 @@ class add_Banner_Extension {
 	 * @since   1.0.0
 	 */
 	public function __construct() {
+		register_activation_hook( __FILE__, array( $this, 'create_table' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+	}
+
+	/**
+	 * create_table.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function create_table () {
+		$db = new add_Banner_Extension_Admin_Db();
+		$db->create_table();
 	}
 
 	/**
