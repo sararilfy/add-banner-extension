@@ -13,6 +13,12 @@ class add_Banner_Extension_Admin_Post {
 	 * @since  1.0.0
 	 */
 	public function __construct() {
+		$db = new add_Banner_Extension_Admin_Db();
+		if ( isset( $_POST['add_banner_extension_id'] ) && $_POST['add_banner_extension_id'] === '' ) {
+			$db->insert_table( $_POST );
+			$this->information_render();
+		}
+
 		$this->page_render();
 	}
 
@@ -21,6 +27,7 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<div class="wrap">';
 		$html .= '<h1>Add New Banner</h1>';
 		$html .= '<form method="post" action="">';
+		$html .= '<input type="hidden" name="add_banner_extension_id" value="">';
 		$html .= '<table class="form-table">';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-image-url">Image URL</label></th>';
@@ -49,7 +56,21 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '</div>';
 		echo $html;
 
+	}
 
 
+	/**
+	 * Information Message Render
+	 *
+	 * @since 1.0.0
+	 */
+	private function information_render () {
+		$html  = '<div id="message" class="updated notice notice-success is-dismissible below-h2">';
+		$html .= '<p>Add Banner Extension Information Update.</p>';
+		$html .= '<button type="button" class="notice-dismiss">';
+		$html .= '<span class="screen-reader-text">Dismiss this notice.</span>';
+		$html .= '</button>';
+		$html .= '</div>';
+		echo $html;
 	}
 }
