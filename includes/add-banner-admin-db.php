@@ -23,7 +23,7 @@ class add_Banner_Extension_Admin_Db {
 	/**
 	 * create_table.
 	 *
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public function create_table() {
 		global $wpdb;
@@ -41,6 +41,8 @@ class add_Banner_Extension_Admin_Db {
 			$query .= "link_url TEXT,";
 			$query .= "open_new_tab BOOLEAN DEFAULT FALSE,";
 			$query .= "insert_element_class TINYTEXT,";
+			$query .= "register_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
+			$query .= "update_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
 			$query .= "UNIQUE KEY id(id)";
 			$query .= ") " . $charset_collate;
 
@@ -48,6 +50,40 @@ class add_Banner_Extension_Admin_Db {
 			dbDelta( $query );
 		}
 
+	}
+
+	/**
+	 * insert_table.
+	 *
+	 * @since 1.0.0
+	 * @param array $post
+	 * @return int
+	 */
+	public function insert_table( array $post ) {
+		global $wpdb;
+
+		$data = array(
+			'image_url'            => strip_tags( $post['banner-image-url'] ),
+			'image_alt'            => strip_tags( $post['banner-image-alt'] ),
+			'link_url'             => strip_tags( $post['banner-image-link'] ),
+			'open_new_tab'         => isset( $post['banner-image-target'] ) ? (int) $post['banner-image-target'] : 0,
+			'insert_element_class' => strip_tags( $post['banner-element-class'] ),
+			'register_date'        => date( "Y-m-d H:i:s" ),
+			'update_date'          => date( "Y-m-d H:i:s" )
+		);
+
+		$prepared = array(
+			'%s',
+			'%s',
+			'%s',
+			'%d',
+			'%s',
+			'%s',
+			'%s'
+		);
+
+		$wpdb->insert( $this->table_name, $data, $prepared );
+		return (int) $wpdb->insert_id;
 	}
 
 }
