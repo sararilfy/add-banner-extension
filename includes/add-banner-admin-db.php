@@ -86,4 +86,24 @@ class add_Banner_Extension_Admin_Db {
 		return (int) $wpdb->insert_id;
 	}
 
+
+	/**
+	 * Get All Data.
+	 *
+	 * @since  1.0.0
+	 * @return array  $results
+	 */
+	public function get_list_options () {
+		global $wpdb;
+
+		$prepared = "SELECT * FROM " . $this->table_name . " ORDER BY update_date DESC";
+
+		return (array) $wpdb->get_results( $prepared );
+	}
+
+	/**
+	 * Delete data.
+	 */
+	public function delete_options() {}
+
 }
