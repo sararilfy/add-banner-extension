@@ -86,6 +86,20 @@ class add_Banner_Extension_Admin_Db {
 		return (int) $wpdb->insert_id;
 	}
 
+	/**
+	 * Get Data.
+	 *
+	 * @since  1.0.0
+	 * @param  integer $id
+	 * @return array   $args
+	 */
+	public function get_options ( $id ) {
+		global $wpdb;
+		$query    = "SELECT * FROM " . $this->table_name . " WHERE id = %d";
+		$data     = array( $id );
+		$prepared = $wpdb->prepare( $query, $data );
+		return (array) $wpdb->get_row( $prepared );
+	}
 
 	/**
 	 * Get All Data.
@@ -102,8 +116,50 @@ class add_Banner_Extension_Admin_Db {
 	}
 
 	/**
-	 * Delete data.
+	 * Update Data.
+	 *
+	 * @since 1.0.0
+	 * @param array $post($_POST)
 	 */
-	public function delete_options() {}
+	public function update_options ( array $post ) {
+		global $wpdb;
+
+		$data = array(
+			"image_url"             => strip_tags( $post['banner-image-url'] ),
+			"image_alt"             => strip_tags( $post['banner-image-alt'] ),
+			"link_url"              => strip_tags( $post['banner-image-link'] ),
+			"open_new_tab"          => isset( $post['banner-image-target'] ) ? $post['banner-image-target'] : 0,
+			"insert_element_class"  => strip_tags( $post['banner-element-class'] )
+		);
+
+		$key = array( 'id' => esc_html( $post['add_banner_extension_id'] ) );
+
+		$prepared = array(
+			'%s',
+			'%s',
+			'%s',
+			'%d',
+			'%s'
+		);
+
+		$key_prepared = array( '%d' );
+
+		$wpdb->update( $this->table_name, $data, $key, $prepared, $key_prepared );
+	}
+
+	/**
+	 * Delete data.
+	 *
+	 * @since 1.0.0
+	 * @param integer $id
+	 */
+	public function delete_options( $id ) {
+		global $wpdb;
+
+		$key = array( 'id' => esc_html( $id ) );
+		$key_prepared = array( '%d' );
+		$wpdb->delete( $this->table_name, $key, $key_prepared );
+
+	}
 
 }
