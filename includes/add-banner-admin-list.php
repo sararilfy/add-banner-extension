@@ -47,7 +47,7 @@ class add_Banner_Extension_Admin_List {
 			$this->information_render();
 		}
 
-		$html  = '<table class="wp-list-table widefat fixed striped">';
+		$html  = '<table class="add-banner-extension-list-table wp-list-table widefat fixed striped">';
 		$html .= '<tr>';
 		$html .= '<thead>';
 		$html .= '<th>image</th>';

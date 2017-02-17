@@ -67,7 +67,7 @@ class add_Banner_Extension {
 			'manage_options',
 			plugin_basename( __FILE__ ),
 			array( $this, 'list_page_render' ),
-			'dashicons-admin-media'
+			'dashicons-format-gallery'
 		);
 		$list_page = add_submenu_page(
 			__FILE__,
