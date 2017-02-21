@@ -29,8 +29,13 @@ class add_Banner_Extension {
 	 */
 	public function __construct() {
 		register_activation_hook( __FILE__, array( $this, 'create_table' ) );
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+
+		if ( is_admin() ) {
+			add_action( 'admin_init', array( $this, 'admin_init' ) );
+			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+		} else {
+			add_action( 'the_content', array( $this, 'the_content' ) );
+		}
 	}
 
 	/**
@@ -52,6 +57,7 @@ class add_Banner_Extension {
 	 */
 	public function admin_init () {
 		wp_register_style( 'add-banner-extension-admin-style', plugins_url( 'css/style.css', __FILE__ ), array(), $this->version );
+		wp_enqueue_style( 'add-banner-extension-admin-style' );
 	}
 
 	/**
@@ -67,7 +73,7 @@ class add_Banner_Extension {
 			'manage_options',
 			plugin_basename( __FILE__ ),
 			array( $this, 'list_page_render' ),
-			'dashicons-admin-media'
+			'dashicons-format-gallery'
 		);
 		$list_page = add_submenu_page(
 			__FILE__,
@@ -119,5 +125,52 @@ class add_Banner_Extension {
 	 */
 	public function add_style () {
 		wp_enqueue_style( 'add-banner-extension-admin-style' );
+	}
+
+	/**
+	 * Display Banner
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 * @param   string $content
+	 */
+	public function the_content ( $content ) {
+
+		$html = '';
+		$categories = get_the_category();
+
+		if ( count( $categories ) > 0 ) {
+
+			require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-db.php' );
+			$db = new add_Banner_Extension_Admin_Db();
+			$args = $db->get_categories( $categories[0]->cat_ID );
+
+			foreach ( $args as $value ) {
+
+				$html .= '<div>';
+				if ( !empty( $value->link_url ) ) {
+					if ( $value->open_new_tab == 1 ) {
+						$html .= '<a href="' . esc_url( $value->link_url ) . '" target="_blank">';
+					} else {
+						$html .= '<a href="' . esc_url( $value->link_url ) . '">';
+					}
+				}
+
+				if ( empty( $value->insert_element_class ) ) {
+					$html .= '<img src="' . esc_url( $value->image_url ) . '" alt="' . esc_attr( $value->image_alt ) . '">';
+				} else {
+					$html .= '<img src="' . esc_url( $value->image_url ) . '" alt="' . esc_attr( $value->image_alt ) . '" class="' . esc_attr( $value->insert_element_class ) . '">';
+				}
+
+				if ( !empty( $value->image_url ) ) {
+					$html .= '</a>';
+				}
+				$html .= '</div>';
+
+			}
+
+		}
+
+		echo $content . $html;
 	}
 }

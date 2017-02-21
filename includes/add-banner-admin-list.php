@@ -40,14 +40,16 @@ class add_Banner_Extension_Admin_List {
 
 		$html  = '';
 		$html .= '<div class="wrap">';
-		$html .= '<h1>Add Banner Extension List</h1>';
+		$html .= '<h1 class="wp-heading-inline">Add Banner Extension List</h1>';
+		$html .= '<a href="' . admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php" class="page-title-action">Add New</a>';
+		$html .= '<hr class="wp-header-end">';
 		echo $html;
 
 		if ( $mode === "delete" ) {
 			$this->information_render();
 		}
 
-		$html  = '<table class="wp-list-table widefat fixed striped">';
+		$html  = '<table class="add-banner-extension-list-table wp-list-table widefat fixed striped">';
 		$html .= '<tr>';
 		$html .= '<thead>';
 		$html .= '<th>image</th>';
@@ -55,6 +57,7 @@ class add_Banner_Extension_Admin_List {
 		$html .= '<th>link url</th>';
 		$html .= '<th>open new tab</th>';
 		$html .= '<th>class</th>';
+		$html .= '<th>category</th>';
 		$html .= '<th></th>';
 		$html .= '</thead>';
 		$html .= '</tr>';
@@ -75,6 +78,7 @@ class add_Banner_Extension_Admin_List {
 				$html .= '<td>' . esc_html( $row->link_url ) . '</td>';
 				$html .= '<td>' . esc_html( $row->open_new_tab ) . '</td>';
 				$html .= '<td>' . esc_html( $row->insert_element_class ) . '</td>';
+				$html .= '<td>' . esc_html( get_the_category_by_ID( $row->category_id ) ) . '</td>';
 				$html .= '<td>';
 				$html .= '<a href="' . $post_url . '&add_banner_extension_id=' . esc_html( $row->id ) . '" class="button">Edit</a>&nbsp;';
 				$html .= '<a href="'. $self_url .'&mode=delete&add_banner_extension_id=' . esc_attr( $row->id ) . '" class="button">Delete</a>';
