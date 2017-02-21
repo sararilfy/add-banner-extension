@@ -41,6 +41,7 @@ class add_Banner_Extension_Admin_Db {
 			$query .= "link_url TEXT,";
 			$query .= "open_new_tab BOOLEAN DEFAULT FALSE,";
 			$query .= "insert_element_class TINYTEXT,";
+			$query .= "category_id BIGINT,";
 			$query .= "register_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
 			$query .= "update_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
 			$query .= "UNIQUE KEY id(id)";
@@ -50,40 +51,6 @@ class add_Banner_Extension_Admin_Db {
 			dbDelta( $query );
 		}
 
-	}
-
-	/**
-	 * insert_table.
-	 *
-	 * @since 1.0.0
-	 * @param array $post
-	 * @return int
-	 */
-	public function insert_table( array $post ) {
-		global $wpdb;
-
-		$data = array(
-			'image_url'            => strip_tags( $post['banner-image-url'] ),
-			'image_alt'            => strip_tags( $post['banner-image-alt'] ),
-			'link_url'             => strip_tags( $post['banner-image-link'] ),
-			'open_new_tab'         => isset( $post['banner-image-target'] ) ? (int) $post['banner-image-target'] : 0,
-			'insert_element_class' => strip_tags( $post['banner-element-class'] ),
-			'register_date'        => date( "Y-m-d H:i:s" ),
-			'update_date'          => date( "Y-m-d H:i:s" )
-		);
-
-		$prepared = array(
-			'%s',
-			'%s',
-			'%s',
-			'%d',
-			'%s',
-			'%s',
-			'%s'
-		);
-
-		$wpdb->insert( $this->table_name, $data, $prepared );
-		return (int) $wpdb->insert_id;
 	}
 
 	/**
@@ -116,6 +83,57 @@ class add_Banner_Extension_Admin_Db {
 	}
 
 	/**
+	 * Get Category.
+	 *
+	 * @since  1.0.0
+	 * @param  integer $category_id
+	 * @return array   $args
+	 */
+	public function get_categories ( $category_id ) {
+		global $wpdb;
+		$query    = "SELECT * FROM " . $this->table_name . " WHERE category_id = %d";
+		$data     = array( $category_id );
+		$prepared = $wpdb->prepare( $query, $data );
+		return (array) $wpdb->get_results( $prepared );
+	}
+
+	/**
+	 * insert_table.
+	 *
+	 * @since 1.0.0
+	 * @param array $post
+	 * @return int
+	 */
+	public function insert_options( array $post ) {
+		global $wpdb;
+
+		$data = array(
+			'image_url'            => strip_tags( $post['banner-image-url'] ),
+			'image_alt'            => strip_tags( $post['banner-image-alt'] ),
+			'link_url'             => strip_tags( $post['banner-image-link'] ),
+			'open_new_tab'         => isset( $post['banner-image-target'] ) ? (int) $post['banner-image-target'] : 0,
+			'insert_element_class' => strip_tags( $post['banner-element-class'] ),
+			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
+			'register_date'        => date( "Y-m-d H:i:s" ),
+			'update_date'          => date( "Y-m-d H:i:s" )
+		);
+
+		$prepared = array(
+			'%s',
+			'%s',
+			'%s',
+			'%d',
+			'%s',
+			'%d',
+			'%s',
+			'%s'
+		);
+
+		$wpdb->insert( $this->table_name, $data, $prepared );
+		return (int) $wpdb->insert_id;
+	}
+
+	/**
 	 * Update Data.
 	 *
 	 * @since 1.0.0
@@ -129,7 +147,9 @@ class add_Banner_Extension_Admin_Db {
 			"image_alt"             => strip_tags( $post['banner-image-alt'] ),
 			"link_url"              => strip_tags( $post['banner-image-link'] ),
 			"open_new_tab"          => isset( $post['banner-image-target'] ) ? $post['banner-image-target'] : 0,
-			"insert_element_class"  => strip_tags( $post['banner-element-class'] )
+			"insert_element_class"  => strip_tags( $post['banner-element-class'] ),
+			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
+			'update_date'          => date( "Y-m-d H:i:s" )
 		);
 
 		$key = array( 'id' => esc_html( $post['add_banner_extension_id'] ) );
@@ -137,6 +157,8 @@ class add_Banner_Extension_Admin_Db {
 		$prepared = array(
 			'%s',
 			'%s',
+			'%s',
+			'%d',
 			'%s',
 			'%d',
 			'%s'
