@@ -32,6 +32,7 @@ class add_Banner_Extension_Admin_Post {
 			"link_url"              => "",
 			"open_new_tab"          => 0,
 			"insert_element_class"  => "",
+			"insert_element_id"     => "",
 			"category_id"           => 0
 		);
 
@@ -110,6 +111,10 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-element-class">Insert Element Class</label></th>';
 		$html .= '<td><input name="banner-element-class" type="text" id="banner-element-class" value="' . esc_attr( $options['insert_element_class'] ) . '" class="regular-text"></td>';
+		$html .= '</tr>';
+		$html .= '<tr>';
+		$html .= '<th scope="row"><label for="banner-element-id">Insert Element Id</label></th>';
+		$html .= '<td><input name="banner-element-id" type="text" id="banner-element-id" value="' . esc_attr( $options['insert_element_id'] ) . '" class="regular-text"></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-display-category">Display Category</label></th>';

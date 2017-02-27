@@ -41,6 +41,7 @@ class add_Banner_Extension_Admin_Db {
 			$query .= "link_url TEXT,";
 			$query .= "open_new_tab BOOLEAN DEFAULT FALSE,";
 			$query .= "insert_element_class TINYTEXT,";
+			$query .= "insert_element_id TINYTEXT,";
 			$query .= "category_id BIGINT,";
 			$query .= "register_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
 			$query .= "update_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
@@ -113,6 +114,7 @@ class add_Banner_Extension_Admin_Db {
 			'link_url'             => strip_tags( $post['banner-image-link'] ),
 			'open_new_tab'         => isset( $post['banner-image-target'] ) ? (int) $post['banner-image-target'] : 0,
 			'insert_element_class' => strip_tags( $post['banner-element-class'] ),
+			'insert_element_id'    => strip_tags( $post['banner-element-id'] ),
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
 			'register_date'        => date( "Y-m-d H:i:s" ),
 			'update_date'          => date( "Y-m-d H:i:s" )
@@ -123,6 +125,7 @@ class add_Banner_Extension_Admin_Db {
 			'%s',
 			'%s',
 			'%d',
+			'%s',
 			'%s',
 			'%d',
 			'%s',
@@ -143,11 +146,12 @@ class add_Banner_Extension_Admin_Db {
 		global $wpdb;
 
 		$data = array(
-			"image_url"             => strip_tags( $post['banner-image-url'] ),
-			"image_alt"             => strip_tags( $post['banner-image-alt'] ),
-			"link_url"              => strip_tags( $post['banner-image-link'] ),
-			"open_new_tab"          => isset( $post['banner-image-target'] ) ? $post['banner-image-target'] : 0,
-			"insert_element_class"  => strip_tags( $post['banner-element-class'] ),
+			"image_url"            => strip_tags( $post['banner-image-url'] ),
+			"image_alt"            => strip_tags( $post['banner-image-alt'] ),
+			"link_url"             => strip_tags( $post['banner-image-link'] ),
+			"open_new_tab"         => isset( $post['banner-image-target'] ) ? $post['banner-image-target'] : 0,
+			"insert_element_class" => strip_tags( $post['banner-element-class'] ),
+			"insert_element_id"    => strip_tags( $post['banner-element-id'] ),
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
 			'update_date'          => date( "Y-m-d H:i:s" )
 		);
@@ -159,6 +163,7 @@ class add_Banner_Extension_Admin_Db {
 			'%s',
 			'%s',
 			'%d',
+			'%s',
 			'%s',
 			'%d',
 			'%s'

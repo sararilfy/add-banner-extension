@@ -57,6 +57,7 @@ class add_Banner_Extension_Admin_List {
 		$html .= '<th>link url</th>';
 		$html .= '<th>open new tab</th>';
 		$html .= '<th>class</th>';
+		$html .= '<th>id</th>';
 		$html .= '<th>category</th>';
 		$html .= '<th></th>';
 		$html .= '</thead>';
@@ -78,6 +79,7 @@ class add_Banner_Extension_Admin_List {
 				$html .= '<td>' . esc_html( $row->link_url ) . '</td>';
 				$html .= '<td>' . esc_html( $row->open_new_tab ) . '</td>';
 				$html .= '<td>' . esc_html( $row->insert_element_class ) . '</td>';
+				$html .= '<td>' . esc_html( $row->insert_element_id ) . '</td>';
 				$html .= '<td>' . esc_html( get_the_category_by_ID( $row->category_id ) ) . '</td>';
 				$html .= '<td>';
 				$html .= '<a href="' . $post_url . '&add_banner_extension_id=' . esc_html( $row->id ) . '" class="button">Edit</a>&nbsp;';
