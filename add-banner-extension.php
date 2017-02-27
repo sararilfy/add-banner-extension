@@ -147,7 +147,7 @@ class add_Banner_Extension {
 
 			foreach ( $args as $value ) {
 
-				$html .= '<div>';
+				$html .= '<div class="add-banner-extension-wrapper">';
 				if ( !empty( $value->link_url ) ) {
 					if ( $value->open_new_tab == 1 ) {
 						$html .= '<a href="' . esc_url( $value->link_url ) . '" target="_blank">';
@@ -156,11 +156,17 @@ class add_Banner_Extension {
 					}
 				}
 
-				if ( empty( $value->insert_element_class ) ) {
-					$html .= '<img src="' . esc_url( $value->image_url ) . '" alt="' . esc_attr( $value->image_alt ) . '">';
-				} else {
-					$html .= '<img src="' . esc_url( $value->image_url ) . '" alt="' . esc_attr( $value->image_alt ) . '" class="' . esc_attr( $value->insert_element_class ) . '">';
+				$html .= '<img src="' . esc_url( $value->image_url ) . '" alt="' . esc_attr( $value->image_alt ) . '"';
+
+				if ( !empty( $value->insert_element_class ) ) {
+					$html .= ' class="' . esc_attr( $value->insert_element_class ) . '"';
 				}
+
+				if ( !empty( $value->insert_element_id ) ) {
+					$html .= ' id="' . esc_attr( $value->insert_element_id ) . '"';
+				}
+
+				$html .= '>';
 
 				if ( !empty( $value->image_url ) ) {
 					$html .= '</a>';
