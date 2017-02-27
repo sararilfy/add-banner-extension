@@ -86,11 +86,11 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<input type="hidden" name="add_banner_extension_id" value="' . esc_attr( $options['id'] ) . '">';
 		$html .= '<table class="form-table">';
 		$html .= '<tr>';
-		$html .= '<th scope="row"><label for="banner-image-url">Image URL</label></th>';
+		$html .= '<th scope="row"><label for="banner-image-url">Image URL <span class="description">(required)</span></label></th>';
 		$html .= '<td><input name="banner-image-url" type="text" id="banner-image-url" value="' . esc_attr( $options['image_url'] ) . '" class="large-text" placeholder="'. esc_url ( home_url() ) .'/wp-content/uploads/0000/00/xxx.jpg" autofocus required></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
-		$html .= '<th scope="row"><label for="banner-image-alt">Image Alt</label></th>';
+		$html .= '<th scope="row"><label for="banner-image-alt">Image Alt <span class="description">(required)</span></label></th>';
 		$html .= '<td><input name="banner-image-alt" type="text" id="banner-image-alt" value="' . esc_attr( $options['image_alt'] ) . '" class="regular-text" required></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
@@ -117,7 +117,7 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<td><input name="banner-element-id" type="text" id="banner-element-id" value="' . esc_attr( $options['insert_element_id'] ) . '" class="regular-text"></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
-		$html .= '<th scope="row"><label for="banner-display-category">Display Category</label></th>';
+		$html .= '<th scope="row"><label for="banner-display-category">Display Category <span class="description">(required)</span></label></th>';
 		$html .= '<td>';
 		echo $html;
 
