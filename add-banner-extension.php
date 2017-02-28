@@ -57,7 +57,6 @@ class add_Banner_Extension {
 	 */
 	public function admin_init () {
 		wp_register_style( 'add-banner-extension-admin-style', plugins_url( 'css/style.css', __FILE__ ), array(), $this->version );
-		wp_enqueue_style( 'add-banner-extension-admin-style' );
 	}
 
 	/**
@@ -92,7 +91,8 @@ class add_Banner_Extension {
 			array( $this, 'post_page_render' )
 		);
 
-		//add_action( 'admin_print_styles-' . $list_page1, array( $this, 'add_style' ) );
+		add_action( 'admin_print_styles-' . $list_page, array( $this, 'add_style' ) );
+		add_action( 'admin_print_scripts-' . $post_page, array( $this, 'add_scripts' ) );
 	}
 
 	/**
@@ -128,6 +128,17 @@ class add_Banner_Extension {
 	}
 
 	/**
+	 * Admin Scripts Add.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function add_scripts () {
+		wp_enqueue_script( 'add-banner-extension-admin-script', plugins_url( 'js/upload.js', __FILE__ ), array( 'jquery') );
+		wp_enqueue_media();
+	}
+
+	/**
 	 * Display Banner
 	 *
 	 * @version 1.0.0
@@ -135,6 +146,11 @@ class add_Banner_Extension {
 	 * @param   string $content
 	 */
 	public function the_content ( $content ) {
+
+		if ( !is_single() ) {
+			echo $content;
+			return;
+		}
 
 		$html = '';
 		$categories = get_the_category();

@@ -53,13 +53,12 @@ class add_Banner_Extension_Admin_List {
 		$html .= '<tr>';
 		$html .= '<thead>';
 		$html .= '<th class="column-primary">Image</th>';
-		$html .= '<th>Image alt</th>';
-		$html .= '<th>Link url</th>';
-		$html .= '<th>Open new tab</th>';
+		$html .= '<th>Image Alt Text</th>';
+		$html .= '<th>Link URL</th>';
+		$html .= '<th>Open New Tab</th>';
 		$html .= '<th>Class</th>';
 		$html .= '<th>Id</th>';
-		$html .= '<th>Category</th>';
-		$html .= '<th>Edit</th>';
+		$html .= '<th class="column-categories">Display Category</th>';
 		$html .= '</thead>';
 		$html .= '</tr>';
 		echo $html;
@@ -73,19 +72,25 @@ class add_Banner_Extension_Admin_List {
 				$html .= '<td class="column-primary">';
 				$html .= '<a href="' . $post_url . '&add_banner_extension_id=' . esc_html( $row->id ) . '">';
 				$html .= '<img src="' . esc_url( $row->image_url ) . '" alt="' . esc_attr( $row->image_alt ) . '">';
-				$html .= '</a>';
+				$html .= '</a>&nbsp;';
+				$html .= '<a href="' . $post_url . '&add_banner_extension_id=' . esc_html( $row->id ) . '" class="button">Edit</a>&nbsp;';
+				$html .= '<a href="'. $self_url .'&mode=delete&add_banner_extension_id=' . esc_attr( $row->id ) . '" class="button">Delete</a>';
 				$html .= '<button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>';
 				$html .= '</td>';
 				$html .= '<td data-colname="Image alt">' . esc_html( $row->image_alt ) . '</td>';
 				$html .= '<td data-colname="Link url">' . esc_html( $row->link_url ) . '</td>';
-				$html .= '<td data-colname="Open new tab">' . esc_html( $row->open_new_tab ) . '</td>';
+				$html .= '<td data-colname="Open new tab">';
+
+				if ( esc_html( $row->open_new_tab ) == 1 ) {
+					$html .= 'ON';
+				} else {
+					$html .= 'OFF';
+				}
+
+				$html .= '</td>';
 				$html .= '<td data-colname="Class">' . esc_html( $row->insert_element_class ) . '</td>';
 				$html .= '<td data-colname="Id">' . esc_html( $row->insert_element_id ) . '</td>';
 				$html .= '<td data-colname="Category">' . esc_html( get_the_category_by_ID( $row->category_id ) ) . '</td>';
-				$html .= '<td data-colname="Edit">';
-				$html .= '<a href="' . $post_url . '&add_banner_extension_id=' . esc_html( $row->id ) . '" class="button">Edit</a>&nbsp;';
-				$html .= '<a href="'. $self_url .'&mode=delete&add_banner_extension_id=' . esc_attr( $row->id ) . '" class="button">Delete</a>';
-				$html .= '</td>';
 				$html .= '</tr>';
 				echo $html;
 			}
