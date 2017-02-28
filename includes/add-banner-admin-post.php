@@ -87,7 +87,17 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<table class="form-table">';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-image-url">Image URL <span class="description">(required)</span></label></th>';
-		$html .= '<td><input name="banner-image-url" type="text" id="banner-image-url" value="' . esc_attr( $options['image_url'] ) . '" class="large-text" placeholder="'. esc_url ( home_url() ) .'/wp-content/uploads/0000/00/xxx.jpg" autofocus required></td>';
+		$html .= '<td>';
+
+		if ( !empty( $options['image_url'] ) ) {
+			$html .= '<img id="banner-image-view" src="' . esc_url( $options['image_url'] ) . '" alt="' . esc_attr( $options['image_alt'] ) . '" width="200">';
+		} else {
+			$html .= '<img id="banner-image-view" src="' . plugins_url( '../images/no-image.gif', __FILE__ ) . '" alt="image" width="200">';
+		}
+
+		$html .= '<input name="banner-image-url" type="text" id="banner-image-url" value="' . esc_attr( $options['image_url'] ) . '" class="large-text" autofocus required>';
+		$html .= '<button id="media-upload">Choose Image</button>';
+		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-image-alt">Image Alt Text <span class="description">(required)</span></label></th>';
@@ -100,7 +110,7 @@ class add_Banner_Extension_Admin_Post {
 
 		$html  = '<br><label for="banner-image-target">';
 
-		if ( $options['open_new_tab'] === 0 ) {
+		if ( !isset( $options['open_new_tab'] ) || $options['open_new_tab'] == 0 ) {
 			$html .= '<input name="banner-image-target" type="checkbox" id="banner-image-target" value="0">';
 		} else {
 			$html .= '<input name="banner-image-target" type="checkbox" id="banner-image-target" value="1" checked>';
