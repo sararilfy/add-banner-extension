@@ -90,7 +90,7 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<td><input name="banner-image-url" type="text" id="banner-image-url" value="' . esc_attr( $options['image_url'] ) . '" class="large-text" placeholder="'. esc_url ( home_url() ) .'/wp-content/uploads/0000/00/xxx.jpg" autofocus required></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
-		$html .= '<th scope="row"><label for="banner-image-alt">Image Alt <span class="description">(required)</span></label></th>';
+		$html .= '<th scope="row"><label for="banner-image-alt">Image Alt Text <span class="description">(required)</span></label></th>';
 		$html .= '<td><input name="banner-image-alt" type="text" id="banner-image-alt" value="' . esc_attr( $options['image_alt'] ) . '" class="regular-text" required></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';

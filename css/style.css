@@ -1,6 +1,28 @@
 .add-banner-extension-list-table {
-    margin-top: 10px;
+	margin-top: 10px;
 }
+
 .add-banner-extension-list-table img {
-    max-width: 100%;
+	max-width: 100%;
+}
+
+.add-banner-extension-list-table .button {
+	margin: 0 0 5px;
+}
+
+@media screen and (max-width: 782px) {
+
+	.add-banner-extension-list-table td {
+		text-overflow: ellipsis;
+	}
+
+	.add-banner-extension-list-table img {
+		max-width: 100px;
+		max-height: 100px;
+	}
+
+	.add-banner-extension-list-table .button {
+		vertical-align: top;
+	}
+
 }
