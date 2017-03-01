@@ -41,7 +41,7 @@ class add_Banner_Extension_Admin_List {
 		$html  = '';
 		$html .= '<div class="wrap">';
 		$html .= '<h1 class="wp-heading-inline">Add Banner Extension List</h1>';
-		$html .= '<a href="' . admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php" class="page-title-action">Add New</a>';
+		$html .= '<a href="' . admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php" class="page-title-action">Add New Banner</a>';
 		$html .= '<hr class="wp-header-end">';
 		echo $html;
 
@@ -56,8 +56,8 @@ class add_Banner_Extension_Admin_List {
 		$html .= '<th>Image Alt Text</th>';
 		$html .= '<th>Link URL</th>';
 		$html .= '<th>Open New Tab</th>';
-		$html .= '<th>Class</th>';
-		$html .= '<th>Id</th>';
+		$html .= '<th>Class Name</th>';
+		$html .= '<th>Id Name</th>';
 		$html .= '<th class="column-categories">Display Category</th>';
 		$html .= '</thead>';
 		$html .= '</tr>';
@@ -70,9 +70,11 @@ class add_Banner_Extension_Admin_List {
 			foreach ( $results as $row ) {
 				$html  = '<tr>';
 				$html .= '<td class="column-primary">';
+				$html .= '<div class="add-banner-extension-list-table-image-wrap">';
 				$html .= '<a href="' . $post_url . '&add_banner_extension_id=' . esc_html( $row->id ) . '">';
 				$html .= '<img src="' . esc_url( $row->image_url ) . '" alt="' . esc_attr( $row->image_alt ) . '">';
-				$html .= '</a>&nbsp;';
+				$html .= '</a>';
+				$html .= '</div>';
 				$html .= '<a href="' . $post_url . '&add_banner_extension_id=' . esc_html( $row->id ) . '" class="button">Edit</a>&nbsp;';
 				$html .= '<a href="'. $self_url .'&mode=delete&add_banner_extension_id=' . esc_attr( $row->id ) . '" class="button">Delete</a>';
 				$html .= '<button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>';
@@ -96,7 +98,7 @@ class add_Banner_Extension_Admin_List {
 			}
 
 		} else {
-			echo '<td colspan="6">Without registration</td>';
+			echo '<td colspan="7">Without registration</td>';
 		}
 
 		$html  = '</table>';

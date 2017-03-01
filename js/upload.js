@@ -16,7 +16,9 @@
 
             images.each(function(file) {
                 $("#banner-image-url").val(file.toJSON().url);
-                $("#banner-image-alt").val(file.toJSON().alt);
+                if($("#banner-image-alt").val() == "") {
+                    $("#banner-image-alt").val(file.toJSON().alt);
+                }
                 $("#banner-image-view").attr("src", file.toJSON().url);
             });
         });

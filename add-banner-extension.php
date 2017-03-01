@@ -76,22 +76,23 @@ class add_Banner_Extension {
 		);
 		$list_page = add_submenu_page(
 			__FILE__,
-			'All Settings',
-			'All Settings',
+			'All Banner List',
+			'All Banner List',
 			'manage_options',
 			plugin_basename( __FILE__ ),
 			array( $this, 'list_page_render' )
 		);
 		$post_page = add_submenu_page(
 			__FILE__,
-			'Add New',
-			'Add New',
+			'Add New Banner',
+			'Add New Banner',
 			'manage_options',
 			plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-post.php',
 			array( $this, 'post_page_render' )
 		);
 
 		add_action( 'admin_print_styles-' . $list_page, array( $this, 'add_style' ) );
+		add_action( 'admin_print_styles-' . $post_page, array( $this, 'add_style' ) );
 		add_action( 'admin_print_scripts-' . $post_page, array( $this, 'add_scripts' ) );
 	}
 

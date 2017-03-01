@@ -90,25 +90,34 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<td>';
 
 		if ( !empty( $options['image_url'] ) ) {
-			$html .= '<img id="banner-image-view" src="' . esc_url( $options['image_url'] ) . '" alt="' . esc_attr( $options['image_alt'] ) . '" width="200">';
+			$html .= '<img id="banner-image-view" src="' . esc_url( $options['image_url'] ) . '" alt="' . esc_attr( $options['image_alt'] ) . '">';
 		} else {
-			$html .= '<img id="banner-image-view" src="' . plugins_url( '../images/no-image.gif', __FILE__ ) . '" alt="image" width="200">';
+			$html .= '<img id="banner-image-view" src="' . plugins_url( '../images/no-image.png', __FILE__ ) . '" alt="image" width="200">';
 		}
 
 		$html .= '<input name="banner-image-url" type="text" id="banner-image-url" value="' . esc_attr( $options['image_url'] ) . '" class="large-text" autofocus required>';
-		$html .= '<button id="media-upload">Choose Image</button>';
+		$html .= '<button type="button" id="media-upload" class="button">Choose Image</button>';
 		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-image-alt">Image Alt Text <span class="description">(required)</span></label></th>';
-		$html .= '<td><input name="banner-image-alt" type="text" id="banner-image-alt" value="' . esc_attr( $options['image_alt'] ) . '" class="regular-text" required></td>';
+		$html .= '<td>';
+		$html .= '<input name="banner-image-alt" type="text" id="banner-image-alt" value="' . esc_attr( $options['image_alt'] ) . '" class="regular-text" required>';
+		$html .= '<p class="description">Enter the text of alt attribute.</p>';
+		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-image-link">Link URL</label></th>';
-		$html .= '<td><input name="banner-image-link" type="text" id="banner-image-link" value="' . esc_attr( $options['link_url'] ) . '" class="large-text" placeholder="'. esc_url ( home_url() ) .'">';
+		$html .= '<td>';
+		$html .= '<input name="banner-image-link" type="text" id="banner-image-link" value="' . esc_attr( $options['link_url'] ) . '" class="large-text" placeholder="'. esc_url ( home_url() ) .'">';
+		$html .= '<p class="description">You can set a link to the image if you enter url.</p>';
+		$html .= '</td>';
+		$html .= '</tr>';
+		$html .= '<tr>';
+		$html .= '<th scope="row"><label for="banner-image-target">Open New Tab</label></th>';
 		echo $html;
 
-		$html  = '<br><label for="banner-image-target">';
+		$html  = '<td>';
 
 		if ( !isset( $options['open_new_tab'] ) || $options['open_new_tab'] == 0 ) {
 			$html .= '<input name="banner-image-target" type="checkbox" id="banner-image-target" value="0">';
@@ -116,15 +125,21 @@ class add_Banner_Extension_Admin_Post {
 			$html .= '<input name="banner-image-target" type="checkbox" id="banner-image-target" value="1" checked>';
 		}
 
-		$html .= 'Open New Tab</label></td>';
+		$html .= 'Open link in new tab</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
-		$html .= '<th scope="row"><label for="banner-element-class">Insert Element Class</label></th>';
-		$html .= '<td><input name="banner-element-class" type="text" id="banner-element-class" value="' . esc_attr( $options['insert_element_class'] ) . '" class="regular-text"></td>';
+		$html .= '<th scope="row"><label for="banner-element-class">Class Name</label></th>';
+		$html .= '<td>';
+		$html .= '<input name="banner-element-class" type="text" id="banner-element-class" value="' . esc_attr( $options['insert_element_class'] ) . '" class="regular-text">';
+		$html .= '<p class="description">Enter the class name here. You can add the class(es) in the banner image.<br />Separate them with a One-byte space, if you want to set multiple.</p>';
+		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
-		$html .= '<th scope="row"><label for="banner-element-id">Insert Element Id</label></th>';
-		$html .= '<td><input name="banner-element-id" type="text" id="banner-element-id" value="' . esc_attr( $options['insert_element_id'] ) . '" class="regular-text"></td>';
+		$html .= '<th scope="row"><label for="banner-element-id">Id Name</label></th>';
+		$html .= '<td>';
+		$html .= '<input name="banner-element-id" type="text" id="banner-element-id" value="' . esc_attr( $options['insert_element_id'] ) . '" class="regular-text">';
+		$html .= '<p class="description">Enter the id name here. You can add the id in the banner image.</p>';
+		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-display-category">Display Category <span class="description">(required)</span></label></th>';
@@ -139,7 +154,9 @@ class add_Banner_Extension_Admin_Post {
 		);
 		wp_dropdown_categories( $args );
 
-		$html  = '</td>';
+		$html  = '<p class="description">Select a category for displaying image.</p>';
+
+		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '</table>';
 
