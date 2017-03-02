@@ -2,7 +2,7 @@
 /*
 Plugin Name: Add Banner Extension
 Plugin URI: https://github.com/sararilfy/add-banner-extension
-Description: (プラグインの短い説明)
+Description: Insert a banner image below the body of the article page. You can change the banner by category.
 Version: 1.0.0
 Author: Yoshie Nakayama
 License: GPLv2 or later
@@ -22,6 +22,13 @@ class add_Banner_Extension {
 	private $version = '1.0.0';
 
 	/**
+	 * Text Domain.
+	 *
+	 * @var string
+	 */
+	private $text_domain = 'add-banner-extension';
+
+	/**
 	 * Constructor Define.
 	 *
 	 * @version 1.0.0
@@ -29,6 +36,7 @@ class add_Banner_Extension {
 	 */
 	public function __construct() {
 		register_activation_hook( __FILE__, array( $this, 'create_table' ) );
+		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
 		if ( is_admin() ) {
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -47,6 +55,16 @@ class add_Banner_Extension {
 	public function create_table () {
 		$db = new add_Banner_Extension_Admin_Db();
 		$db->create_table();
+	}
+
+	/**
+	 * i18n.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function plugins_loaded () {
+		load_plugin_textdomain( $this->text_domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
@@ -104,7 +122,7 @@ class add_Banner_Extension {
 	 */
 	public function list_page_render () {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-list.php' );
-		new add_Banner_Extension_Admin_List();
+		new add_Banner_Extension_Admin_List( $this->text_domain );
 	}
 
 	/**
@@ -115,7 +133,7 @@ class add_Banner_Extension {
 	 */
 	public function post_page_render () {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-post.php' );
-		new add_Banner_Extension_Admin_Post();
+		new add_Banner_Extension_Admin_Post( $this->text_domain );
 	}
 
 	/**
@@ -135,7 +153,6 @@ class add_Banner_Extension {
 	 * @since   1.0.0
 	 */
 	public function add_scripts () {
-		wp_enqueue_script( 'add-banner-extension-admin-script', plugins_url( 'js/upload.js', __FILE__ ), array( 'jquery') );
 		wp_enqueue_media();
 	}
 
