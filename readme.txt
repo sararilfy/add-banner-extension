@@ -5,7 +5,7 @@ Requires at least: 4.7.2
 Tested up to: 4.7.2
 Stable tag: 1.0.0
 
-Plug-in Posted Display Widget & ShortCode Add. You can also save and display your browsing history to Cookie.
+Insert a banner image below the body of the article page. You can change the banner by category.
 
 == Description ==
 

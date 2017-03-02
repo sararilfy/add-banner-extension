@@ -2,7 +2,7 @@
 /*
 Plugin Name: Add Banner Extension
 Plugin URI: https://github.com/sararilfy/add-banner-extension
-Description: (プラグインの短い説明)
+Description: Insert a banner image below the body of the article page. You can change the banner by category.
 Version: 1.0.0
 Author: Yoshie Nakayama
 License: GPLv2 or later
