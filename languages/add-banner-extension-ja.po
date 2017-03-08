@@ -1,0 +1,150 @@
+# Copyright (C) 2017 Add Banner Extension
+# This file is distributed under the same license as the Add Banner Extension package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Add Banner Extension 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/add-banner-"
+"extension\n"
+"POT-Creation-Date: 2017-03-08 08:20:30+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/add-banner-admin-list.php:54
+msgid "Add Banner Extension List"
+msgstr "Add Banner Extension 一覧"
+
+#: includes/add-banner-admin-list.php:66
+msgid "Image"
+msgstr "画像"
+
+#: includes/add-banner-admin-list.php:67 includes/add-banner-admin-post.php:114
+msgid "Image Alt Text"
+msgstr "画像のAlt属性"
+
+#: includes/add-banner-admin-list.php:68 includes/add-banner-admin-post.php:121
+msgid "Link URL"
+msgstr "リンク URL"
+
+#: includes/add-banner-admin-list.php:69 includes/add-banner-admin-post.php:128
+msgid "Open New Tab"
+msgstr "新規タブで開く"
+
+#: includes/add-banner-admin-list.php:70 includes/add-banner-admin-post.php:142
+msgid "Class Name"
+msgstr "Class名"
+
+#: includes/add-banner-admin-list.php:71 includes/add-banner-admin-post.php:149
+msgid "Id Name"
+msgstr "ID名"
+
+#: includes/add-banner-admin-list.php:72 includes/add-banner-admin-post.php:156
+msgid "Display Category"
+msgstr "表示するカテゴリ"
+
+#: includes/add-banner-admin-list.php:89
+msgid "Edit"
+msgstr "編集"
+
+#: includes/add-banner-admin-list.php:90
+msgid "Delete"
+msgstr "削除"
+
+#: includes/add-banner-admin-list.php:91
+msgid "Show more details"
+msgstr "詳細を追加表示"
+
+#: includes/add-banner-admin-list.php:98
+msgid "ON"
+msgstr "オン"
+
+#: includes/add-banner-admin-list.php:100
+msgid "OFF"
+msgstr "オフ"
+
+#: includes/add-banner-admin-list.php:112
+msgid "Without registration"
+msgstr "登録はありません"
+
+#: includes/add-banner-admin-list.php:130
+msgid "Deletion succeeds."
+msgstr "削除に成功しました。"
+
+#: includes/add-banner-admin-list.php:132
+#: includes/add-banner-admin-post.php:195
+msgid "Dismiss this notice."
+msgstr "この通知を閉じてください。"
+
+#: includes/add-banner-admin-post.php:85
+msgid "Add New Banner"
+msgstr "新規バナー画像追加"
+
+#: includes/add-banner-admin-post.php:100
+msgid "Image URL"
+msgstr "画像のURL"
+
+#: includes/add-banner-admin-post.php:100
+#: includes/add-banner-admin-post.php:114
+#: includes/add-banner-admin-post.php:156
+msgid "required"
+msgstr "必須"
+
+#: includes/add-banner-admin-post.php:110
+#: includes/add-banner-admin-upload.php:8
+#: includes/add-banner-admin-upload.php:13
+msgid "Choose Image"
+msgstr "画像を選択"
+
+#: includes/add-banner-admin-post.php:117
+msgid "Enter the text of alt attribute."
+msgstr "alt属性のテキストを入力します。"
+
+#: includes/add-banner-admin-post.php:124
+msgid "You can set a link to the image if you enter url."
+msgstr "URLを入力すると、バナー画像にリンクを設定することができます。"
+
+#: includes/add-banner-admin-post.php:139
+msgid "Open link in new tab"
+msgstr "リンクを新規タブで開く"
+
+#: includes/add-banner-admin-post.php:145
+msgid ""
+"Enter the class name here. You can add the class(es) in the banner image."
+msgstr "Class名をここに入力してください。バナー画像にクラス（複数可）を追加することができます。"
+
+#: includes/add-banner-admin-post.php:145
+msgid "Separate them with a One-byte space, if you want to set multiple."
+msgstr "複数設定する場合は、半角スペースで区切ります。"
+
+#: includes/add-banner-admin-post.php:152
+msgid "Enter the id name here. You can add the id in the banner image."
+msgstr "ID名をここに入力してください。バナー画像にIDを追加することができます。"
+
+#: includes/add-banner-admin-post.php:168
+msgid "Select a category for displaying image."
+msgstr "表示するカテゴリーを選択してください。"
+
+#: includes/add-banner-admin-post.php:193
+msgid "Add Banner Extension Information Update."
+msgstr "Add Banner Extension 情報を更新しました。"
+
+#. Plugin Name of the plugin/theme
+msgid "Add Banner Extension"
+msgstr "Add Banner Extension"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/sararilfy/add-banner-extension"
+msgstr "https://github.com/sararilfy/add-banner-extension"
+
+#. Description of the plugin/theme
+msgid ""
+"Insert a banner image below the body of the article page. You can change the "
+"banner by category."
+msgstr "記事ページの本文の下にバナー画像を挿入します。バナーはカテゴリ別に変更できます。"
+
+#. Author of the plugin/theme
+msgid "Yoshie Nakayama"
+msgstr "Yoshie Nakayama"

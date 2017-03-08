@@ -5,12 +5,12 @@ $no_image_path = plugins_url( '../images/no-image.png', __FILE__ );
 (function($) {
 	$(function() {
 		var custom_uploader = wp.media({
-			title: 'Choose Image',
+			title: '<?php echo __( 'Choose Image', $this->text_domain ); ?>',
 			library: {
 				type: 'image'
 			},
 			button: {
-				text: 'Choose Image'
+				text: '<?php echo __( 'Choose Image', $this->text_domain ); ?>'
 			},
 			multiple: false
 		});
