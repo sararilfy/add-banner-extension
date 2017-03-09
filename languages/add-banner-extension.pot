@@ -1,0 +1,170 @@
+# Copyright (C) 2017 Add Banner Extension
+# This file is distributed under the same license as the Add Banner Extension package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Add Banner Extension 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/add-banner-"
+"extension\n"
+"POT-Creation-Date: 2017-03-09 07:02:17+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. #-#-#-#-#  add-banner-extension.pot (Add Banner Extension 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: add-banner-extension.php:88
+msgid "Add Banner Extension"
+msgstr ""
+
+#: add-banner-extension.php:89
+msgid "Add Banner"
+msgstr ""
+
+#: add-banner-extension.php:97 add-banner-extension.php:98
+#: includes/add-banner-admin-list.php:54
+msgid "All Banner List"
+msgstr ""
+
+#: add-banner-extension.php:105 add-banner-extension.php:106
+#: includes/add-banner-admin-list.php:55
+msgid "Add New"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:66
+msgid "Image"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:67 includes/add-banner-admin-list.php:93
+#: includes/add-banner-admin-post.php:114
+msgid "Image Alt Text"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:68 includes/add-banner-admin-list.php:94
+#: includes/add-banner-admin-post.php:121
+msgid "Link URL"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:69 includes/add-banner-admin-list.php:95
+#: includes/add-banner-admin-post.php:128
+msgid "Open New Tab"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:70 includes/add-banner-admin-list.php:104
+#: includes/add-banner-admin-post.php:142
+msgid "Class Name"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:71 includes/add-banner-admin-list.php:105
+#: includes/add-banner-admin-post.php:149
+msgid "Id Name"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:72 includes/add-banner-admin-list.php:106
+#: includes/add-banner-admin-post.php:156
+msgid "Display Category"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:89
+msgid "Edit"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:90
+msgid "Delete"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:91
+msgid "Show more details"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:98
+msgid "ON"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:100
+msgid "OFF"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:112
+msgid "Without registration"
+msgstr ""
+
+#: includes/add-banner-admin-list.php:130
+msgid "Deletion succeeds."
+msgstr ""
+
+#: includes/add-banner-admin-list.php:132
+#: includes/add-banner-admin-post.php:194
+msgid "Dismiss this notice."
+msgstr ""
+
+#: includes/add-banner-admin-post.php:85
+msgid "Edit Banner"
+msgstr ""
+
+#: includes/add-banner-admin-post.php:100
+msgid "Image URL"
+msgstr ""
+
+#: includes/add-banner-admin-post.php:100
+#: includes/add-banner-admin-post.php:114
+#: includes/add-banner-admin-post.php:156
+msgid "required"
+msgstr ""
+
+#: includes/add-banner-admin-post.php:110
+#: includes/add-banner-admin-upload.php:8
+#: includes/add-banner-admin-upload.php:13
+msgid "Choose Image"
+msgstr ""
+
+#: includes/add-banner-admin-post.php:117
+msgid "Enter the text of alt attribute."
+msgstr ""
+
+#: includes/add-banner-admin-post.php:124
+msgid "You can set a link to the image if you enter url."
+msgstr ""
+
+#: includes/add-banner-admin-post.php:139
+msgid "Open link in new tab"
+msgstr ""
+
+#: includes/add-banner-admin-post.php:145
+msgid ""
+"You can add the class(es) in the banner image. \"class=\" is unnecessary."
+msgstr ""
+
+#: includes/add-banner-admin-post.php:145
+msgid "Separate them with a One-byte space, if you want to set multiple."
+msgstr ""
+
+#: includes/add-banner-admin-post.php:152
+msgid "You can add the id in the banner image. \"id=\" is unnecessary."
+msgstr ""
+
+#: includes/add-banner-admin-post.php:168
+msgid ""
+"Images are displayed only when the selected category are attached to the "
+"post."
+msgstr ""
+
+#: includes/add-banner-admin-post.php:192
+msgid "Add Banner Extension Information Update."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/sararilfy/add-banner-extension"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Register an image from the administration screen, and a different banner "
+"image is displayed for each category."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Yoshie Nakayama"
+msgstr ""

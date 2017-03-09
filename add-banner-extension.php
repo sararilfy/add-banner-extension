@@ -2,7 +2,7 @@
 /*
 Plugin Name: Add Banner Extension
 Plugin URI: https://github.com/sararilfy/add-banner-extension
-Description: Insert a banner image below the body of the article page. You can change the banner by category.
+Description: Register an image from the administration screen, and a different banner image is displayed for each category.
 Version: 1.0.0
 Author: Yoshie Nakayama
 License: GPLv2 or later
@@ -85,8 +85,8 @@ class add_Banner_Extension {
 	 */
 	public function admin_menu () {
 		add_menu_page(
-			'Add Banner Extension',
-			'Add Banner',
+			__( 'Add Banner Extension' , $this->text_domain ),
+			__( 'Add Banner' , $this->text_domain ),
 			'manage_options',
 			plugin_basename( __FILE__ ),
 			array( $this, 'list_page_render' ),
@@ -94,16 +94,16 @@ class add_Banner_Extension {
 		);
 		$list_page = add_submenu_page(
 			__FILE__,
-			'All Banner List',
-			'All Banner List',
+			__( 'All Banner List' , $this->text_domain ),
+			__( 'All Banner List' , $this->text_domain ),
 			'manage_options',
 			plugin_basename( __FILE__ ),
 			array( $this, 'list_page_render' )
 		);
 		$post_page = add_submenu_page(
 			__FILE__,
-			'Add New Banner',
-			'Add New Banner',
+			__( 'Add New' , $this->text_domain ),
+			__( 'Add New' , $this->text_domain ),
 			'manage_options',
 			plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-post.php',
 			array( $this, 'post_page_render' )

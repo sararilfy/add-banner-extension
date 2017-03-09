@@ -51,8 +51,8 @@ class add_Banner_Extension_Admin_List {
 
 		$html  = '';
 		$html .= '<div class="wrap">';
-		$html .= '<h1 class="wp-heading-inline">' . __( 'Add Banner Extension List', $this->text_domain ) . '</h1>';
-		$html .= '<a href="' . admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php" class="page-title-action">Add New Banner</a>';
+		$html .= '<h1 class="wp-heading-inline">' . __( 'All Banner List', $this->text_domain ) . '</h1>';
+		$html .= '<a href="' . admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php" class="page-title-action">' . __( 'Add New', $this->text_domain ) . '</a>';
 		$html .= '<hr class="wp-header-end">';
 		echo $html;
 
@@ -90,9 +90,9 @@ class add_Banner_Extension_Admin_List {
 				$html .= '<a href="'. $self_url .'&mode=delete&add_banner_extension_id=' . esc_attr( $row->id ) . '" class="button">' . __( 'Delete', $this->text_domain ) . '</a>';
 				$html .= '<button type="button" class="toggle-row"><span class="screen-reader-text">' . __( 'Show more details', $this->text_domain ) . '</span></button>';
 				$html .= '</td>';
-				$html .= '<td data-colname="Image alt">' . esc_html( $row->image_alt ) . '</td>';
-				$html .= '<td data-colname="Link url">' . esc_html( $row->link_url ) . '</td>';
-				$html .= '<td data-colname="Open new tab">';
+				$html .= '<td data-colname="' . __( 'Image Alt Text', $this->text_domain ) . '">' . esc_html( $row->image_alt ) . '</td>';
+				$html .= '<td data-colname="' . __( 'Link URL', $this->text_domain ) . '">' . esc_html( $row->link_url ) . '</td>';
+				$html .= '<td data-colname="' . __( 'Open New Tab', $this->text_domain ) . '">';
 
 				if ( esc_html( $row->open_new_tab ) == 1 ) {
 					$html .= __( 'ON', $this->text_domain );
@@ -101,9 +101,9 @@ class add_Banner_Extension_Admin_List {
 				}
 
 				$html .= '</td>';
-				$html .= '<td data-colname="Class">' . esc_html( $row->insert_element_class ) . '</td>';
-				$html .= '<td data-colname="Id">' . esc_html( $row->insert_element_id ) . '</td>';
-				$html .= '<td data-colname="Category">' . esc_html( get_the_category_by_ID( $row->category_id ) ) . '</td>';
+				$html .= '<td data-colname="' . __( 'Class Name', $this->text_domain ) . '">' . esc_html( $row->insert_element_class ) . '</td>';
+				$html .= '<td data-colname="' . __( 'Id Name', $this->text_domain ) . '">' . esc_html( $row->insert_element_id ) . '</td>';
+				$html .= '<td data-colname="' . __( 'Display Category', $this->text_domain ) . '">' . esc_html( get_the_category_by_ID( $row->category_id ) ) . '</td>';
 				$html .= '</tr>';
 				echo $html;
 			}
