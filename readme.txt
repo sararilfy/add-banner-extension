@@ -1,7 +1,7 @@
 === WordPress Posted Display ===
 Contributors: Sararilfy
 Tags: post, posts, category
-Requires at least: 4.7.3
+Requires at least: 4.7.2
 Tested up to: 4.7.3
 Stable tag: 1.0.0
 License: GPLv2 or later
@@ -10,12 +10,35 @@ Register an image from the administration screen, and a different banner image i
 
 == Description ==
 
-Let the user who read the article guide you to the site with the banner image.(CALL TO ACTION)
+Let's guide users who read articles in banner images to their site or product.(CALL TO ACTION)
+Since you can change banner images for each category, you can also guide users to sites that are more interested in users depending on the contents of the articles.
+There is no need to embed same images in articles many times from the posting screen!
 
-* When you activate the plug-in, the "Add Banner" menu will be added to the left main menu.Please register and edit from there.
-* It corresponds only to Post Type Post. It does not correspond to Page or Custom Post Types.
-* If multiple categories are registered in the article, the banner image of one of the registered categories will be displayed.
-* Links, class names, ID names can be set for images. Please adjust the displayed banner style.
+= About functions =
+When you activate the plug-in, "Add banner" menu is added to the left main menu. Please register and edit from there.
+
+Press the "Choose Image" button to open the Media Uploader.
+Please select an existing image or upload an image.
+The image URL can also be written as a relative path.
+
+It is displayed under the body of the posted article linked to the registered category.
+Multiple images can be displayed in the same category.
+
+You can set class and ID in the image. Please use it for measurement with tag manager and adjustment of style sheet.
+
+When the banner is displayed, the banner image is surrounded by the following tags.
+You can use it by adjusting the style sheet.
+`
+<div class="add-banner-extension-wrapper">
+  <img src="sample.jpg" alt="sample">
+</div>
+`
+
+= Attention =
+
+* Depending on the theme and plugin you are using, the display position of the banner image may change or more than one banner may be displayed. The theme of "Twenty Seventeen" is confirmed to work.
+* Supported Post Types are 'Post' only. Currently, 'Page' and 'Custom Post Types' are not supported. Also, it does not support 'Tags' or 'Custom Taxonomies'.
+
 
 == Installation ==
 
@@ -23,11 +46,29 @@ Let the user who read the article guide you to the site with the banner image.(C
 * It installs in `wp-content/plugins`.
 * The plug-in is activated.
 
+
+== Frequently Asked Questions ==
+
+= I want to display the image on the top of the article or sidebar. =
+Currently, it can not be displayed.
+I plan to be able to implement it with Shortcode in the future.
+
+= I want to display image on all pages irrespective of categories. =
+Currently, if you do not link to categories, it is not displayed.
+
+= What happens when multiple categories are linked to an article? =
+Only one category is selected, and if there is a banner image registering that category, it will be displayed.
+
+= Do 'Tags' and 'Custom Taxonomies' correspond? =
+It does not correspond. I would like to respond in the future.
+
+
+    
 == Screenshots ==
 
 1. The registered banner image list is displayed.
 
-2. Banner image registration and edit screen.
+2. Banner image registration and edit screen. Items : Image URL (required), Image Alt Text (required), Link URL, Open New Tab, Class Name, Id Name, Display Category (required).
 
 == Changelog ==
 
