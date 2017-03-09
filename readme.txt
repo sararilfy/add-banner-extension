@@ -1,12 +1,12 @@
 === WordPress Posted Display ===
 Contributors: Sararilfy
 Tags: post, posts, category
-Requires at least: 4.7.2
-Tested up to: 4.7.2
+Requires at least: 4.7.3
+Tested up to: 4.7.3
 Stable tag: 1.0.0
 License: GPLv2 or later
 
-When you register an image from the management screen, a different banner image is displayed for each category under the body of the article page.
+Register an image from the administration screen, and a different banner image is displayed for each category.
 
 == Description ==
 

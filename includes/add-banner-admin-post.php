@@ -82,7 +82,7 @@ class add_Banner_Extension_Admin_Post {
 	private function page_render ( $options, $status ) {
 		$html  = '';
 		$html .= '<div class="wrap">';
-		$html .= '<h1 class="wp-heading-inline">' . __( 'Add New Banner', $this->text_domain ) . '</h1>';
+		$html .= '<h1 class="wp-heading-inline">' . __( 'Edit Banner', $this->text_domain ) . '</h1>';
 		echo $html;
 
 		switch ( $status ) {
@@ -142,14 +142,14 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<th scope="row"><label for="banner-element-class">' . __( 'Class Name', $this->text_domain ) . '</label></th>';
 		$html .= '<td>';
 		$html .= '<input name="banner-element-class" type="text" id="banner-element-class" value="' . esc_attr( $options['insert_element_class'] ) . '" class="regular-text">';
-		$html .= '<p class="description">' . __( 'Enter the class name here. You can add the class(es) in the banner image.', $this->text_domain ) . '<br />' . __( 'Separate them with a One-byte space, if you want to set multiple.', $this->text_domain ) . '</p>';
+		$html .= '<p class="description">' . __( 'You can add the class(es) in the banner image. "class=" is unnecessary.', $this->text_domain ) . '<br />' . __( 'Separate them with a One-byte space, if you want to set multiple.', $this->text_domain ) . '</p>';
 		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-element-id">' . __( 'Id Name', $this->text_domain ) . '</label></th>';
 		$html .= '<td>';
 		$html .= '<input name="banner-element-id" type="text" id="banner-element-id" value="' . esc_attr( $options['insert_element_id'] ) . '" class="regular-text">';
-		$html .= '<p class="description">' . __( 'Enter the id name here. You can add the id in the banner image.', $this->text_domain ) . '</p>';
+		$html .= '<p class="description">' . __( 'You can add the id in the banner image. "id=" is unnecessary.', $this->text_domain ) . '</p>';
 		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
@@ -165,7 +165,7 @@ class add_Banner_Extension_Admin_Post {
 		);
 		wp_dropdown_categories( $args );
 
-		$html  = '<p class="description">' . __( 'Select a category for displaying image.', $this->text_domain ) . '</p>';
+		$html  = '<p class="description">' . __( 'Images are displayed only when the selected category are attached to the post.', $this->text_domain ) . '</p>';
 
 		$html .= '</td>';
 		$html .= '</tr>';
@@ -181,7 +181,6 @@ class add_Banner_Extension_Admin_Post {
 
 		require_once ( plugin_dir_path( __FILE__ ) . 'add-banner-admin-upload.php' );
 	}
-
 
 	/**
 	 * Information Message Render

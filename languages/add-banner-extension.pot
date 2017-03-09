@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Add Banner Extension 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/add-banner-"
 "extension\n"
-"POT-Creation-Date: 2017-03-08 08:20:30+00:00\n"
+"POT-Creation-Date: 2017-03-09 07:02:17+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,35 +13,57 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
+#. #-#-#-#-#  add-banner-extension.pot (Add Banner Extension 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: add-banner-extension.php:88
+msgid "Add Banner Extension"
+msgstr ""
+
+#: add-banner-extension.php:89
+msgid "Add Banner"
+msgstr ""
+
+#: add-banner-extension.php:97 add-banner-extension.php:98
 #: includes/add-banner-admin-list.php:54
-msgid "Add Banner Extension List"
+msgid "All Banner List"
+msgstr ""
+
+#: add-banner-extension.php:105 add-banner-extension.php:106
+#: includes/add-banner-admin-list.php:55
+msgid "Add New"
 msgstr ""
 
 #: includes/add-banner-admin-list.php:66
 msgid "Image"
 msgstr ""
 
-#: includes/add-banner-admin-list.php:67 includes/add-banner-admin-post.php:114
+#: includes/add-banner-admin-list.php:67 includes/add-banner-admin-list.php:93
+#: includes/add-banner-admin-post.php:114
 msgid "Image Alt Text"
 msgstr ""
 
-#: includes/add-banner-admin-list.php:68 includes/add-banner-admin-post.php:121
+#: includes/add-banner-admin-list.php:68 includes/add-banner-admin-list.php:94
+#: includes/add-banner-admin-post.php:121
 msgid "Link URL"
 msgstr ""
 
-#: includes/add-banner-admin-list.php:69 includes/add-banner-admin-post.php:128
+#: includes/add-banner-admin-list.php:69 includes/add-banner-admin-list.php:95
+#: includes/add-banner-admin-post.php:128
 msgid "Open New Tab"
 msgstr ""
 
-#: includes/add-banner-admin-list.php:70 includes/add-banner-admin-post.php:142
+#: includes/add-banner-admin-list.php:70 includes/add-banner-admin-list.php:104
+#: includes/add-banner-admin-post.php:142
 msgid "Class Name"
 msgstr ""
 
-#: includes/add-banner-admin-list.php:71 includes/add-banner-admin-post.php:149
+#: includes/add-banner-admin-list.php:71 includes/add-banner-admin-list.php:105
+#: includes/add-banner-admin-post.php:149
 msgid "Id Name"
 msgstr ""
 
-#: includes/add-banner-admin-list.php:72 includes/add-banner-admin-post.php:156
+#: includes/add-banner-admin-list.php:72 includes/add-banner-admin-list.php:106
+#: includes/add-banner-admin-post.php:156
 msgid "Display Category"
 msgstr ""
 
@@ -74,12 +96,12 @@ msgid "Deletion succeeds."
 msgstr ""
 
 #: includes/add-banner-admin-list.php:132
-#: includes/add-banner-admin-post.php:195
+#: includes/add-banner-admin-post.php:194
 msgid "Dismiss this notice."
 msgstr ""
 
 #: includes/add-banner-admin-post.php:85
-msgid "Add New Banner"
+msgid "Edit Banner"
 msgstr ""
 
 #: includes/add-banner-admin-post.php:100
@@ -112,7 +134,7 @@ msgstr ""
 
 #: includes/add-banner-admin-post.php:145
 msgid ""
-"Enter the class name here. You can add the class(es) in the banner image."
+"You can add the class(es) in the banner image. \"class=\" is unnecessary."
 msgstr ""
 
 #: includes/add-banner-admin-post.php:145
@@ -120,19 +142,17 @@ msgid "Separate them with a One-byte space, if you want to set multiple."
 msgstr ""
 
 #: includes/add-banner-admin-post.php:152
-msgid "Enter the id name here. You can add the id in the banner image."
+msgid "You can add the id in the banner image. \"id=\" is unnecessary."
 msgstr ""
 
 #: includes/add-banner-admin-post.php:168
-msgid "Select a category for displaying image."
+msgid ""
+"Images are displayed only when the selected category are attached to the "
+"post."
 msgstr ""
 
-#: includes/add-banner-admin-post.php:193
+#: includes/add-banner-admin-post.php:192
 msgid "Add Banner Extension Information Update."
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Add Banner Extension"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -141,8 +161,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Insert a banner image below the body of the article page. You can change the "
-"banner by category."
+"Register an image from the administration screen, and a different banner "
+"image is displayed for each category."
 msgstr ""
 
 #. Author of the plugin/theme
