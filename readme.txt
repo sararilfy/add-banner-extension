@@ -39,13 +39,11 @@ You can use it by adjusting the style sheet.
 * Depending on the theme and plugin you are using, the display position of the banner image may change or more than one banner may be displayed. The theme of "Twenty Seventeen" is confirmed to work.
 * Supported Post Types are 'Post' only. Currently, 'Page' and 'Custom Post Types' are not supported. Also, it does not support 'Tags' or 'Custom Taxonomies'.
 
-
 == Installation ==
 
 * A plug-in installation screen is displayed in the WordPress admin panel.
 * It installs in `wp-content/plugins`.
 * The plug-in is activated.
-
 
 == Frequently Asked Questions ==
 
@@ -62,8 +60,6 @@ Only one category is selected, and if there is a banner image registering that c
 = Do 'Tags' and 'Custom Taxonomies' correspond? =
 It does not correspond. I would like to respond in the future.
 
-
-    
 == Screenshots ==
 
 1. The registered banner image list is displayed.
