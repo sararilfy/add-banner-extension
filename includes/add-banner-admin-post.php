@@ -128,7 +128,7 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<th scope="row"><label for="banner-image-target">' . __( 'Open New Tab', $this->text_domain ) . '</label></th>';
 		echo $html;
 
-		$html  = '<td>';
+		$html  = '<td><label>';
 
 		if ( !isset( $options['open_new_tab'] ) || $options['open_new_tab'] == 0 ) {
 			$html .= '<input name="banner-image-target" type="checkbox" id="banner-image-target" value="0">';
@@ -136,7 +136,7 @@ class add_Banner_Extension_Admin_Post {
 			$html .= '<input name="banner-image-target" type="checkbox" id="banner-image-target" value="1" checked>';
 		}
 
-		$html .= __( 'Open link in new tab', $this->text_domain ) . '</td>';
+		$html .= __( 'Open link in new tab', $this->text_domain ) . '</label></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-element-class">' . __( 'Class Name', $this->text_domain ) . '</label></th>';
