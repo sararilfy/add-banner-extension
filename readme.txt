@@ -1,4 +1,4 @@
-=== WordPress Posted Display ===
+=== Add Banner Extension ===
 Contributors: Sararilfy
 Tags: post, posts, category
 Requires at least: 4.7.2
