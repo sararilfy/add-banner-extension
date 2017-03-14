@@ -6,60 +6,70 @@
 - Stable tag: 1.0.0
 - License: GPLv2 or later
 
-管理画面から画像を登録すると、記事に紐づいたカテゴリーごとに異なるバナー画像を表示します。
+Register an image from the administration screen, and a different banner image is displayed for each category.
 
-##説明
+Read this in other languages: <a href="https://github.com/sararilfy/add-banner-extension/blob/develop/README.ja.md">日本語</a>
 
-バナー画像で、記事を読んでもらったユーザーを自分のサイトやプロダクトに誘導しましょう（Call To Action）。
-カテゴリーごとにバナー画像を変更できるので、記事の内容に応じて、よりユーザーの関心の近いサイトにユーザーを誘導することも可能です。
-なんども投稿画面から記事に同じ画像を埋め込む必要も無くなります！
 
-###機能について
-* プラグインを有効化すると、左のメインメニューに「バナー追加」メニューが追加されます。そこから登録・編集してください。
+##Description
 
-* 「画像を選択」ボタンを押すと、メディアアップローダーが開きます。
-既存の画像を選ぶか、画像をアップロードしてください。画像URLは相対パスで書くことも可能です。
+Let's guide users who read articles in banner images to their site or product.(CALL TO ACTION)
+Since you can change banner images for each category, you can also guide users to sites that are more interested in users depending on the contents of the articles.
+There is no need to embed same images in articles many times from the posting screen!
 
-* 登録したカテゴリーに紐づく投稿記事の本文下に表示されます。同じカテゴリーに複数画像を表示可能です。
+###About functions
+* When you activate the plug-in, "Add banner" menu is added to the left main menu. Please register and edit from there.
 
-* 画像にclassやIDを設定可能です。タグマネージャーでの計測や、スタイルシートの調整に役立ててください。
+* Press the "Choose Image" button to open the Media Uploader.
+Please select an existing image or upload an image.
+The image URL can also be written as a relative path.
 
-* バナーが表示された時、バナー画像は以下のタグで囲まれます。スタイルシートの調整に役立ててください。
+* It is displayed under the body of the posted article linked to the registered category.
+Multiple images can be displayed in the same category.
 
+* You can set class and ID in the image. Please use it for measurement with tag manager and adjustment of style sheet.
+
+* When the banner is displayed, the banner image is surrounded by the following tags.
+You can use it by adjusting the style sheet.
 ```
 <div class="add-banner-extension-wrapper">
   <img src="sample.jpg" alt="sample">
 </div>
 ```
 
+###Attention
 
-###注意
-* テーマや使用しているプラグインによっては、バナー画像の表示の位置が変わったり、バナーが複数表示される可能性があります。「Twenty Seventeen」のテーマでは動作確認済みです。
-* 対応している投稿タイプは投稿のみです。現在、固定ページやカスタム投稿には対応していません。また、タグやカスタムたくそのみーにも対応していません。
+* Depending on the theme and plugin you are using, the display position of the banner image may change or more than one banner may be displayed. The theme of "Twenty Seventeen" is confirmed to work.
+* Supported Post Types are 'Post' only. Currently, 'Page' and 'Custom Post Types' are not supported. Also, it does not support 'Tags' or 'Custom Taxonomies'.
 
+##Installation
 
-##よくある質問
+* A plug-in installation screen is displayed in the WordPress admin panel.
+* It installs in `wp-content/plugins`.
+* The plug-in is activated.
 
-###画像を記事の上やサイドバーに表示したい
-現在、表示はできません。
-今後、ショートコードで実装できるようにする予定です。
+##Frequently Asked Questions
 
-###カテゴリーに関わらず、全てのページで出したい
-現在、カテゴリーに紐づけないと、表示されない仕組みです。
+###I want to display the image on the top of the article or sidebar. 
+Currently, it can not be displayed.
+I plan to be able to implement it with Shortcode in the future.
 
-###記事に複数カテゴリーが紐づいていた時どうなりますか？
-いずれか１つだけのカテゴリーが選ばれ、そのカテゴリーを登録しているバナー画像があれば、表示されます。
+###I want to display image on all pages irrespective of categories.
+Currently, if you do not link to categories, it is not displayed.
 
-###タグやカスタムタクソノミーは対応していますか？
-対応していません。今後、実装したいと思います。
+###What happens when multiple categories are linked to an article? 
+Only one category is selected, and if there is a banner image registering that category, it will be displayed.
 
-###スクリーンショット
-1. 登録したバナー画像一覧が表示されます。
-2. バナー画像登録・編集画面。項目:画像URL、画像Alt属性、画像のリンクURL、新規タブでリンクを開くか、class属性、ID属性、表示カテゴリ
+###Do 'Tags' and 'Custom Taxonomies' correspond? 
+It does not correspond. I would like to respond in the future.
 
+##Screenshots
 
-##変更ログ
+1. The registered banner image list is displayed.
 
-### 1.0.0（日付未定）
-* 初回リリース
+2. Banner image registration and edit screen. Items : Image URL (required), Image Alt Text (required), Link URL, Open New Tab, Class Name, Id Name, Display Category (required).
 
+##Changelog
+
+### 1.0.0 (2017-03-XX)
+* The first release.
