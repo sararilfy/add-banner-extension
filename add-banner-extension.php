@@ -162,12 +162,12 @@ class add_Banner_Extension {
 	 * @version 1.0.0
 	 * @since   1.0.0
 	 * @param   string $content
+	 * @return  string $content
 	 */
 	public function the_content ( $content ) {
 
 		if ( !is_single() ) {
-			echo $content;
-			return;
+			return $content;
 		}
 
 		$html = '';
@@ -211,6 +211,6 @@ class add_Banner_Extension {
 
 		}
 
-		echo $content . $html;
+		return $content . $html;
 	}
 }
