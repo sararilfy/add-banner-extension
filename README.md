@@ -13,8 +13,8 @@ Read this in other languages: <a href="./README.ja.md">日本語</a>
 
 ## Description
 
-Let's add banner images to articles and direct users to your site or product.（Call To Action）
-Since you can change banner images for each category, you can also guide users to sites that are more interested in users depending on the contents of the articles.
+Let's add banner images to articles and direct users to your site or product.（Call To Action）<br>
+Since you can change banner images for each category, you can also guide users to sites that are more interested in users depending on the contents of the articles.<br>
 There is no need to embed same images in articles many times from the posting screen!
 
 ### About functions
