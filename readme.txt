@@ -10,7 +10,7 @@ Register an image from the administration screen, and a different banner image i
 
 == Description ==
 
-Let's guide users who read articles in banner images to their site or product.(CALL TO ACTION)
+Let's add banner images to articles and direct users to your site or product.（Call To Action）
 Since you can change banner images for each category, you can also guide users to sites that are more interested in users depending on the contents of the articles.
 There is no need to embed same images in articles many times from the posting screen!
 
