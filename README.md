@@ -63,6 +63,9 @@ Only one category is selected, and if there is a banner image registering that c
 ### Do 'Tags' and 'Custom Taxonomies' correspond? 
 It does not correspond. I would like to respond in the future.
 
+### In the "Edit Banner" screen, the category you want to set is not displayed in the category to be displayed.
+It is not displayed unless articles are published in the category.
+
 ## Screenshots
 
 1. The registered banner image list is displayed.
