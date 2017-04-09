@@ -74,5 +74,5 @@ It is not displayed unless articles are published in the category.
 
 ## Changelog
 
-### 1.0.0 (2017-04-08)
+### 1.0.0 (2017-04-09)
 * The first release.

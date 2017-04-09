@@ -64,5 +64,5 @@ Read this in other languages: <a href="./README.ja.md">日本語</a>
 
 ## 変更ログ
 
-### 1.0.0(2017-04-08)
+### 1.0.0(2017-04-09)
 * 初回リリース
