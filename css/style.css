@@ -1,0 +1,55 @@
+/*--------------------------------------------------------------
+Admin: All Banner List
+--------------------------------------------------------------*/
+
+.add-banner-extension-list-table {
+	margin-top: 10px;
+}
+
+.add-banner-extension-list-table-image-wrap {
+	height: 100px;
+	margin: 0 5px 5px 0;
+}
+
+.add-banner-extension-list-table-image-wrap img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.add-banner-extension-list-table .button {
+	margin: 0 0 5px;
+}
+
+@media screen and (max-width: 782px) {
+
+	.add-banner-extension-list-table td {
+		text-overflow: ellipsis;
+	}
+
+	.add-banner-extension-list-table .button {
+		vertical-align: top;
+	}
+
+	.add-banner-extension-list-table-image-wrap {
+		display: inline-block;
+		vertical-align: top;
+		width: 100px;
+	}
+
+}
+
+
+/*--------------------------------------------------------------
+Admin: Add New Banner
+--------------------------------------------------------------*/
+
+#banner-image-view {
+	display: block;
+	margin: 0 0 10px;
+	max-height: 200px;
+	max-width: 300px;
+}
+
+#media-upload {
+	margin: 5px 0 0;
+}

@@ -1,0 +1,170 @@
+# Copyright (C) 2017 Add Banner Extension
+# This file is distributed under the same license as the Add Banner Extension package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Add Banner Extension 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/add-banner-"
+"extension\n"
+"POT-Creation-Date: 2017-03-09 07:02:17+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. #-#-#-#-#  add-banner-extension.pot (Add Banner Extension 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: add-banner-extension.php:88
+msgid "Add Banner Extension"
+msgstr "Add Banner Extension"
+
+#: add-banner-extension.php:89
+msgid "Add Banner"
+msgstr "バナー追加"
+
+#: add-banner-extension.php:97 add-banner-extension.php:98
+#: includes/add-banner-admin-list.php:54
+msgid "All Banner List"
+msgstr "全てのバナー一覧"
+
+#: add-banner-extension.php:105 add-banner-extension.php:106
+#: includes/add-banner-admin-list.php:55
+msgid "Add New"
+msgstr "新規追加"
+
+#: includes/add-banner-admin-list.php:66
+msgid "Image"
+msgstr "画像"
+
+#: includes/add-banner-admin-list.php:67 includes/add-banner-admin-list.php:93
+#: includes/add-banner-admin-post.php:114
+msgid "Image Alt Text"
+msgstr "画像 Alt属性"
+
+#: includes/add-banner-admin-list.php:68 includes/add-banner-admin-list.php:94
+#: includes/add-banner-admin-post.php:121
+msgid "Link URL"
+msgstr "リンク URL"
+
+#: includes/add-banner-admin-list.php:69 includes/add-banner-admin-list.php:95
+#: includes/add-banner-admin-post.php:128
+msgid "Open New Tab"
+msgstr "新規タブで開く"
+
+#: includes/add-banner-admin-list.php:70 includes/add-banner-admin-list.php:104
+#: includes/add-banner-admin-post.php:142
+msgid "Class Name"
+msgstr "Class名"
+
+#: includes/add-banner-admin-list.php:71 includes/add-banner-admin-list.php:105
+#: includes/add-banner-admin-post.php:149
+msgid "Id Name"
+msgstr "ID名"
+
+#: includes/add-banner-admin-list.php:72 includes/add-banner-admin-list.php:106
+#: includes/add-banner-admin-post.php:156
+msgid "Display Category"
+msgstr "表示するカテゴリ"
+
+#: includes/add-banner-admin-list.php:89
+msgid "Edit"
+msgstr "編集"
+
+#: includes/add-banner-admin-list.php:90
+msgid "Delete"
+msgstr "削除"
+
+#: includes/add-banner-admin-list.php:91
+msgid "Show more details"
+msgstr "詳細を追加表示"
+
+#: includes/add-banner-admin-list.php:98
+msgid "ON"
+msgstr "ON"
+
+#: includes/add-banner-admin-list.php:100
+msgid "OFF"
+msgstr "OFF"
+
+#: includes/add-banner-admin-list.php:112
+msgid "Without registration"
+msgstr "登録はありません"
+
+#: includes/add-banner-admin-list.php:130
+msgid "Deletion succeeds."
+msgstr "削除に成功しました。"
+
+#: includes/add-banner-admin-list.php:132
+#: includes/add-banner-admin-post.php:194
+msgid "Dismiss this notice."
+msgstr "この通知を閉じてください。"
+
+#: includes/add-banner-admin-post.php:85
+msgid "Edit Banner"
+msgstr "バナーを編集"
+
+#: includes/add-banner-admin-post.php:100
+msgid "Image URL"
+msgstr "画像のURL"
+
+#: includes/add-banner-admin-post.php:100
+#: includes/add-banner-admin-post.php:114
+#: includes/add-banner-admin-post.php:156
+msgid "required"
+msgstr "必須"
+
+#: includes/add-banner-admin-post.php:110
+#: includes/add-banner-admin-upload.php:8
+#: includes/add-banner-admin-upload.php:13
+msgid "Choose Image"
+msgstr "画像を選択"
+
+#: includes/add-banner-admin-post.php:117
+msgid "Enter the text of alt attribute."
+msgstr "alt属性のテキストを入力します。"
+
+#: includes/add-banner-admin-post.php:124
+msgid "You can set a link to the image if you enter url."
+msgstr "URLを入力すると、バナー画像にリンクを設定することができます。"
+
+#: includes/add-banner-admin-post.php:139
+msgid "Open link in new tab"
+msgstr "リンクを新規タブで開く"
+
+#: includes/add-banner-admin-post.php:145
+msgid ""
+"You can add the class(es) in the banner image. \"class=\" is unnecessary."
+msgstr "バナー画像にクラス（複数可）を追加することができます。「class=""」は不要です。"
+
+#: includes/add-banner-admin-post.php:145
+msgid "Separate them with a One-byte space, if you want to set multiple."
+msgstr "複数設定する場合は、半角スペースで区切ります。"
+
+#: includes/add-banner-admin-post.php:152
+msgid "You can add the id in the banner image. \"id=\" is unnecessary."
+msgstr "バナー画像にIDを追加することができます。「id=""」は不要です。"
+
+#: includes/add-banner-admin-post.php:168
+msgid ""
+"Images are displayed only when the selected category are attached to the "
+"post."
+msgstr "選択したカテゴリーが投稿に紐づいている場合のみ画像が表示されます。"
+
+#: includes/add-banner-admin-post.php:192
+msgid "Add Banner Extension Information Update."
+msgstr "Add Banner Extension 情報を更新しました。"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/sararilfy/add-banner-extension"
+msgstr "https://github.com/sararilfy/add-banner-extension"
+
+#. Description of the plugin/theme
+msgid ""
+"Register an image from the administration screen, and a different banner "
+"image is displayed for each category."
+msgstr "管理画面から画像を登録すると、カテゴリーごとに異なるバナー画像を表示します。"
+
+#. Author of the plugin/theme
+msgid "Yoshie Nakayama"
+msgstr "Yoshie Nakayama"
