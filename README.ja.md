@@ -2,8 +2,8 @@
 - Contributors: Sararilfy
 - Tags: post, posts, category
 - Requires at least: 4.7.2
-- Tested up to: 4.7.3
-- Stable tag: 1.0.0
+- Tested up to: 4.7.4
+- Stable tag: 1.0.1
 - License: GPLv2 or later
 
 管理画面から画像を登録すると、記事に紐づいたカテゴリーごとに異なるバナー画像を表示します。
@@ -66,3 +66,6 @@ Read this in other languages: <a href="./README.ja.md">日本語</a>
 
 ### 1.0.0(2017-04-09)
 * 初回リリース
+
+###1.0.1 (2017-04-25)
+* WordPress バージョン 4.7.4 動作チェック

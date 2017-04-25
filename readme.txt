@@ -2,8 +2,8 @@
 Contributors: Sararilfy
 Tags: post, posts, category
 Requires at least: 4.7.2
-Tested up to: 4.7.3
-Stable tag: 1.0.0
+Tested up to: 4.7.4
+Stable tag: 1.0.1
 License: GPLv2 or later
 
 Register an image from the administration screen, and a different banner image is displayed for each category.
@@ -73,3 +73,6 @@ It is not displayed unless articles are published in the category.
 
 = 1.0.0 (2017-04-09) =
 * The first release.
+
+= 1.0.1 (2017-04-25) =
+* WordPress version 4.7.4 operation check.
