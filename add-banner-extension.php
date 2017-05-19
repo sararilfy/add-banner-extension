@@ -3,7 +3,7 @@
 Plugin Name: Add Banner Extension
 Plugin URI: https://github.com/sararilfy/add-banner-extension
 Description: Register an image from the administration screen, and a different banner image is displayed for each category.
-Version: 1.0.1
+Version: 1.0.2
 Author: Yoshie Nakayama
 License: GPLv2 or later
 Text Domain: add-banner-extension
@@ -19,7 +19,7 @@ class add_Banner_Extension {
 	 *
 	 * @var string
 	 */
-	private $version = '1.0.1';
+	private $version = '1.0.2';
 
 	/**
 	 * Text Domain.
