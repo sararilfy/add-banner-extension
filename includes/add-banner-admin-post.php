@@ -4,6 +4,7 @@
  * Class add_Banner_Extension_Admin_Post
  *
  * @author Yoshie Nakayama
+ * @version  1.2.0
  * @since  1.0.0
  */
 class add_Banner_Extension_Admin_Post {
@@ -95,6 +96,7 @@ class add_Banner_Extension_Admin_Post {
 
 		$html  = '<form method="post" action="">';
 		$html .= '<input type="hidden" name="add_banner_extension_id" value="' . esc_attr( $options['id'] ) . '">';
+		$html .= '<h2 class="wp-heading-inline">' . __( 'Banner Setting', $this->text_domain ) . '</h2>';
 		$html .= '<table class="form-table">';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-image-url">' . __( 'Image URL', $this->text_domain ) . ' <span class="description">(' . __( 'required', $this->text_domain ) . ')</span></label></th>';
@@ -150,6 +152,26 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<td>';
 		$html .= '<input name="banner-element-id" type="text" id="banner-element-id" value="' . esc_attr( $options['insert_element_id'] ) . '" class="regular-text">';
 		$html .= '<p class="description">' . __( 'You can add the id in the banner image. "id=" is unnecessary.', $this->text_domain ) . '</p>';
+		$html .= '</td>';
+		$html .= '</tr>';
+		$html .= '</table>';
+
+		$html .= '<h2 class="wp-heading-inline">' . __( 'Display Setting', $this->text_domain ) . '</h2>';
+
+		$html .= '<table class="form-table">';
+		$html .= '<tr>';
+		$html .= '<th scope="row"><label for="">' . __( 'How display', $this->text_domain ) . ' <span class="description">(' . __( 'required', $this->text_domain ) . ')</span></label></th>';
+		$html .= '<td><fieldset>';
+		$html .= '<label><input type="radio" name="banner-how-display" id="banner-display-single" value="display-single" checked="checked">' . __( 'Under article', $this->text_domain ) . '</label><br>';
+		$html .= '<label><input type="radio" name="banner-how-display" id="banner-display-shortcode" value="display-shortcode">' . __( 'ShortCode', $this->text_domain );
+		$html .= '</label>';
+		$html .= '</fieldset></td>';
+		$html .= '</tr>';
+		$html .= '<tr>';
+		$html .= '<th scope="row"><label for="">' . __( 'Condition', $this->text_domain ) . '</label></th>';
+		$html .= '<td><label>';
+		$html .= '<input name="banner-condition" type="checkbox" id="banner-condition" value="1" checked>' . __( 'Filter by condition', $this->text_domain );
+		$html .= '</label>';
 		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';

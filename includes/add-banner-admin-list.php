@@ -41,6 +41,7 @@ class add_Banner_Extension_Admin_List {
 	/**
 	 * LIST Page HTML Render
 	 *
+	 * @version  1.2.0
 	 * @since  1.0.0
 	 * @param add_Banner_Extension_Admin_Db $db
 	 * @param String $mode
@@ -66,10 +67,8 @@ class add_Banner_Extension_Admin_List {
 		$html .= '<th class="column-primary">' . __( 'Image', $this->text_domain ) . '</th>';
 		$html .= '<th>' . __( 'Image Alt Text', $this->text_domain ) . '</th>';
 		$html .= '<th>' . __( 'Link URL', $this->text_domain ) . '</th>';
-		$html .= '<th>' . __( 'Open New Tab', $this->text_domain ) . '</th>';
-		$html .= '<th>' . __( 'Class Name', $this->text_domain ) . '</th>';
-		$html .= '<th>' . __( 'Id Name', $this->text_domain ) . '</th>';
-		$html .= '<th class="column-categories">' . __( 'Display Category', $this->text_domain ) . '</th>';
+		$html .= '<th class="column-categories">' . __( 'Condition', $this->text_domain ) . '</th>';
+		$html .= '<th class="add-banner-extension-list-how-display">' . __( 'How display', $this->text_domain ) . '</th>';
 		$html .= '</thead>';
 		$html .= '</tr>';
 		echo $html;
@@ -92,18 +91,11 @@ class add_Banner_Extension_Admin_List {
 				$html .= '</td>';
 				$html .= '<td data-colname="' . __( 'Image Alt Text', $this->text_domain ) . '">' . esc_html( $row->image_alt ) . '</td>';
 				$html .= '<td data-colname="' . __( 'Link URL', $this->text_domain ) . '">' . esc_html( $row->link_url ) . '</td>';
-				$html .= '<td data-colname="' . __( 'Open New Tab', $this->text_domain ) . '">';
-
-				if ( esc_html( $row->open_new_tab ) == 1 ) {
-					$html .= __( 'ON', $this->text_domain );
-				} else {
-					$html .= __( 'OFF', $this->text_domain );
-				}
-
+				$html .= '<td data-colname="' . __( 'Condition', $this->text_domain ) . '">' . esc_html( get_the_category_by_ID( $row->category_id ) ) . '<br>or' . __( 'Do not filter by condition', $this->text_domain ) . '</td>';
+				$html .= '<td data-colname="' . __( 'Display place', $this->text_domain ) . '">';
+				$html .= 'Under article or<br>';
+				$html .= 'ShortCode<input type="text" readonly="readonly" value="[add-banner-extension id=&quot;' . esc_attr( $row->id ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $row->category_id ) . '&quot;]" class="large-text code">';
 				$html .= '</td>';
-				$html .= '<td data-colname="' . __( 'Class Name', $this->text_domain ) . '">' . esc_html( $row->insert_element_class ) . '</td>';
-				$html .= '<td data-colname="' . __( 'Id Name', $this->text_domain ) . '">' . esc_html( $row->insert_element_id ) . '</td>';
-				$html .= '<td data-colname="' . __( 'Display Category', $this->text_domain ) . '">' . esc_html( get_the_category_by_ID( $row->category_id ) ) . '</td>';
 				$html .= '</tr>';
 				echo $html;
 			}
