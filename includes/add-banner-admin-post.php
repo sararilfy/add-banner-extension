@@ -45,7 +45,9 @@ class add_Banner_Extension_Admin_Post {
 			"open_new_tab"          => 0,
 			"insert_element_class"  => "",
 			"insert_element_id"     => "",
-			"category_id"           => 0
+			"category_id"           => 0,
+			"how_display"           => "article",
+			"condition"             => 0
 		);
 
 		/** Key Set */
@@ -162,8 +164,9 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="">' . __( 'How display', $this->text_domain ) . ' <span class="description">(' . __( 'required', $this->text_domain ) . ')</span></label></th>';
 		$html .= '<td><fieldset>';
-		$html .= '<label><input type="radio" name="banner-how-display" id="banner-display-single" value="display-single" checked="checked">' . __( 'Under article', $this->text_domain ) . '</label><br>';
-		$html .= '<label><input type="radio" name="banner-how-display" id="banner-display-shortcode" value="display-shortcode">' . __( 'ShortCode', $this->text_domain );
+		$html .= '<label><input type="radio" name="banner-how-display" id="banner-display-single" value="article" checked="checked">' . __( 'Under article', $this->text_domain ) . '</label><br>';
+		$html .= '<label>';
+		$html .= '<input type="radio" name="banner-how-display" id="banner-display-shortcode" value="shortcode">' . __( 'ShortCode', $this->text_domain );
 		$html .= '</label>';
 		$html .= '</fieldset></td>';
 		$html .= '</tr>';

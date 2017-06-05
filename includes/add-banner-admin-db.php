@@ -45,6 +45,8 @@ class add_Banner_Extension_Admin_Db {
 			$query .= "category_id BIGINT,";
 			$query .= "register_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
 			$query .= "update_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
+			$query .= "how_display TINYTEXT,";
+			$query .= "condition BOOLEAN DEFAULT FALSE,";
 			$query .= "UNIQUE KEY id(id)";
 			$query .= ") " . $charset_collate;
 
@@ -117,7 +119,9 @@ class add_Banner_Extension_Admin_Db {
 			'insert_element_id'    => strip_tags( $post['banner-element-id'] ),
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
 			'register_date'        => date( "Y-m-d H:i:s" ),
-			'update_date'          => date( "Y-m-d H:i:s" )
+			'update_date'          => date( "Y-m-d H:i:s" ),
+			'how_display'          => strip_tags( $post['banner-display-shortcode'] ),
+			'condition'         => isset( $post['banner-condition'] ) ? (int) 1 : 0
 		);
 
 		$prepared = array(
@@ -129,7 +133,9 @@ class add_Banner_Extension_Admin_Db {
 			'%s',
 			'%d',
 			'%s',
-			'%s'
+			'%s',
+			'%s',
+			'%d'
 		);
 
 		$wpdb->insert( $this->table_name, $data, $prepared );
@@ -153,7 +159,9 @@ class add_Banner_Extension_Admin_Db {
 			"insert_element_class" => strip_tags( $post['banner-element-class'] ),
 			"insert_element_id"    => strip_tags( $post['banner-element-id'] ),
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
-			'update_date'          => date( "Y-m-d H:i:s" )
+			'update_date'          => date( "Y-m-d H:i:s" ),
+			'how_display'          => strip_tags( $post['banner-display-shortcode'] ),
+			'condition'         => isset( $post['banner-condition'] ) ? (int) 1 : 0
 		);
 
 		$key = array( 'id' => esc_html( $post['add_banner_extension_id'] ) );
@@ -166,7 +174,9 @@ class add_Banner_Extension_Admin_Db {
 			'%s',
 			'%s',
 			'%d',
-			'%s'
+			'%s',
+			'%s',
+			'%d'
 		);
 
 		$key_prepared = array( '%d' );
