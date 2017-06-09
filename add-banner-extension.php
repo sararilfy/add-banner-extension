@@ -54,7 +54,7 @@ class add_Banner_Extension {
 	 */
 	public function create_table () {
 		$db = new add_Banner_Extension_Admin_Db();
-		$db->create_table();
+		$db->create_table( $this->text_domain, $this->version );
 	}
 
 	/**

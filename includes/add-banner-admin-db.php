@@ -24,36 +24,74 @@ class add_Banner_Extension_Admin_Db {
 	 * create_table.
 	 *
 	 * @since 1.0.0
+	 * @param string $text_domain
+	 * @param string $version
 	 */
-	public function create_table() {
+	public function create_table( $text_domain, $version ) {
 		global $wpdb;
 
-		$prepared     = $wpdb->prepare( "SHOW TABLES LIKE %s", $this->table_name );
-		$is_db_exists = $wpdb->get_var( $prepared );
+		$prepared        = $wpdb->prepare( "SHOW TABLES LIKE %s", $this->table_name );
+		$is_db_exists    = $wpdb->get_var( $prepared );
+		$charset_collate = $wpdb->get_charset_collate();
 
 		if ( is_null( $is_db_exists ) ) {
-			$charset_collate = $wpdb->get_charset_collate();
-
-			$query  = "CREATE TABLE " . $this->table_name;
-			$query .= "(id MEDIUMINT(9) NOT NULL AUTO_INCREMENT PRIMARY KEY,";
-			$query .= "image_url TEXT NOT NULL,";
-			$query .= "image_alt TEXT,";
-			$query .= "link_url TEXT,";
-			$query .= "open_new_tab BOOLEAN DEFAULT FALSE,";
-			$query .= "insert_element_class TINYTEXT,";
-			$query .= "insert_element_id TINYTEXT,";
-			$query .= "category_id BIGINT,";
-			$query .= "register_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
-			$query .= "update_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
-			$query .= "how_display TINYTEXT,";
-			$query .= "condition BOOLEAN DEFAULT FALSE,";
-			$query .= "UNIQUE KEY id(id)";
-			$query .= ") " . $charset_collate;
 
 			require_once ( ABSPATH . 'wp-admin/includes/upgrade.php' );
-			dbDelta( $query );
+
+			$this->create_table_execute( $charset_collate, $text_domain, $version );
+
+		} else {
+			/**
+			 * version up process.
+			 *
+			 * @since 2.0.0
+			 */
+			$options = get_option( $text_domain );
+
+			if ( !isset( $options['version'] ) || $options['version'] !== $version ) {
+
+				$lists = $this->get_list_options();
+
+				$wpdb->query( "DROP TABLE " . $this->table_name );
+
+				$this->create_table_execute( $charset_collate, $text_domain, $version );
+
+
+
+			}
 		}
 
+	}
+
+	/**
+	 * Create table execute
+	 *
+	 * @since 2.0.0
+	 * @param string $charset_collate
+	 * @param string $text_domain
+	 * @param string $version
+	 */
+	private function create_table_execute ( $charset_collate, $text_domain, $version ) {
+		$query  = "CREATE TABLE " . $this->table_name;
+		$query .= "(id MEDIUMINT(9) NOT NULL AUTO_INCREMENT PRIMARY KEY,";
+		$query .= "image_url TEXT NOT NULL,";
+		$query .= "image_alt TEXT,";
+		$query .= "link_url TEXT,";
+		$query .= "open_new_tab BOOLEAN DEFAULT FALSE,";
+		$query .= "insert_element_class TINYTEXT,";
+		$query .= "insert_element_id TINYTEXT,";
+		$query .= "category_id BIGINT,";
+		$query .= "how_display TINYTEXT,";
+		$query .= "condition_setting BOOLEAN DEFAULT FALSE,";
+		$query .= "register_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
+		$query .= "update_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
+		$query .= "UNIQUE KEY id(id)";
+		$query .= ") " . $charset_collate;
+
+		dbDelta( $query );
+
+		$options = array( 'version' => $version );
+		update_option( $text_domain, $options, 'yes' );
 	}
 
 	/**
@@ -119,9 +157,7 @@ class add_Banner_Extension_Admin_Db {
 			'insert_element_id'    => strip_tags( $post['banner-element-id'] ),
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
 			'register_date'        => date( "Y-m-d H:i:s" ),
-			'update_date'          => date( "Y-m-d H:i:s" ),
-			'how_display'          => strip_tags( $post['banner-display-shortcode'] ),
-			'condition'         => isset( $post['banner-condition'] ) ? (int) 1 : 0
+			'update_date'          => date( "Y-m-d H:i:s" )
 		);
 
 		$prepared = array(
@@ -133,9 +169,7 @@ class add_Banner_Extension_Admin_Db {
 			'%s',
 			'%d',
 			'%s',
-			'%s',
-			'%s',
-			'%d'
+			'%s'
 		);
 
 		$wpdb->insert( $this->table_name, $data, $prepared );
@@ -159,9 +193,7 @@ class add_Banner_Extension_Admin_Db {
 			"insert_element_class" => strip_tags( $post['banner-element-class'] ),
 			"insert_element_id"    => strip_tags( $post['banner-element-id'] ),
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
-			'update_date'          => date( "Y-m-d H:i:s" ),
-			'how_display'          => strip_tags( $post['banner-display-shortcode'] ),
-			'condition'         => isset( $post['banner-condition'] ) ? (int) 1 : 0
+			'update_date'          => date( "Y-m-d H:i:s" )
 		);
 
 		$key = array( 'id' => esc_html( $post['add_banner_extension_id'] ) );
@@ -174,9 +206,7 @@ class add_Banner_Extension_Admin_Db {
 			'%s',
 			'%s',
 			'%d',
-			'%s',
-			'%s',
-			'%d'
+			'%s'
 		);
 
 		$key_prepared = array( '%d' );
