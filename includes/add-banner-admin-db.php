@@ -36,8 +36,6 @@ class add_Banner_Extension_Admin_Db {
 
 		if ( is_null( $is_db_exists ) ) {
 
-			require_once ( ABSPATH . 'wp-admin/includes/upgrade.php' );
-
 			$this->create_table_execute( $charset_collate, $text_domain, $version );
 
 		} else {
@@ -56,8 +54,25 @@ class add_Banner_Extension_Admin_Db {
 
 				$this->create_table_execute( $charset_collate, $text_domain, $version );
 
+				foreach ( $lists as $list ) {
 
+					$args = array(
+						'image_url'            => $list->image_url,
+						'image_alt'            => $list->image_alt,
+						'link_url'             => $list->link_url,
+						'open_new_tab'         => $list->open_new_tab,
+						'insert_element_class' => $list->insert_element_class,
+						'insert_element_id'    => $list->insert_element_id,
+						'category_id'          => $list->category_id,
+						'how_display'          => 'article',
+						'condition_setting'    => true,
+						'register_date'        => $list->register_date,
+						'update_date'          => $list->update_date
+					);
 
+					$this->insert_options( $args );
+
+				}
 			}
 		}
 
@@ -72,6 +87,9 @@ class add_Banner_Extension_Admin_Db {
 	 * @param string $version
 	 */
 	private function create_table_execute ( $charset_collate, $text_domain, $version ) {
+
+		require_once ( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
 		$query  = "CREATE TABLE " . $this->table_name;
 		$query .= "(id MEDIUMINT(9) NOT NULL AUTO_INCREMENT PRIMARY KEY,";
 		$query .= "image_url TEXT NOT NULL,";
@@ -91,7 +109,9 @@ class add_Banner_Extension_Admin_Db {
 		dbDelta( $query );
 
 		$options = array( 'version' => $version );
+
 		update_option( $text_domain, $options, 'yes' );
+
 	}
 
 	/**
