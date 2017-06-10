@@ -2,8 +2,8 @@
 - Contributors: Sararilfy
 - Tags: post, posts, category
 - Requires at least: 4.7.2
-- Tested up to: 4.7.5
-- Stable tag: 1.0.2
+- Tested up to: 4.8
+- Stable tag: 1.0.3
 - License: GPLv2 or later
 
 Register an image from the administration screen, and a different banner image is displayed for each category.
@@ -73,6 +73,9 @@ It is not displayed unless articles are published in the category.
 2. Banner image registration and edit screen. Items : Image URL (required), Image Alt Text (required), Link URL, Open New Tab, Class Name, Id Name, Display Category (required).
 
 ## Changelog
+
+###1.0.3 (2017-06-10)
+* WordPress version 4.8 operation check.
 
 ###1.0.2 (2017-05-19)
 * WordPress version 4.7.5 operation check.
