@@ -98,9 +98,9 @@ class add_Banner_Extension_Admin_Db {
 		$query .= "open_new_tab BOOLEAN DEFAULT FALSE,";
 		$query .= "insert_element_class TINYTEXT,";
 		$query .= "insert_element_id TINYTEXT,";
-		$query .= "category_id BIGINT,";
 		$query .= "how_display TINYTEXT,";
 		$query .= "condition_setting BOOLEAN DEFAULT FALSE,";
+		$query .= "category_id BIGINT,";
 		$query .= "register_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
 		$query .= "update_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
 		$query .= "UNIQUE KEY id(id)";
@@ -175,6 +175,8 @@ class add_Banner_Extension_Admin_Db {
 			'open_new_tab'         => isset( $post['banner-image-target'] ) ? (int) 1 : 0,
 			'insert_element_class' => strip_tags( $post['banner-element-class'] ),
 			'insert_element_id'    => strip_tags( $post['banner-element-id'] ),
+			'how_display'          => strip_tags( $post['banner-how-display'] ),
+			'condition_setting'    => isset( $post['banner-condition'] ) ? (int) 1 : 0,
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
 			'register_date'        => date( "Y-m-d H:i:s" ),
 			'update_date'          => date( "Y-m-d H:i:s" )
@@ -187,6 +189,8 @@ class add_Banner_Extension_Admin_Db {
 			'%d',
 			'%s',
 			'%s',
+			'%s',
+			'%d',
 			'%d',
 			'%s',
 			'%s'
@@ -212,6 +216,8 @@ class add_Banner_Extension_Admin_Db {
 			"open_new_tab"         => isset( $post['banner-image-target'] ) ? 1 : 0,
 			"insert_element_class" => strip_tags( $post['banner-element-class'] ),
 			"insert_element_id"    => strip_tags( $post['banner-element-id'] ),
+			'how_display'          => strip_tags( $post['banner-how-display'] ),
+			'condition_setting'    => isset( $post['banner-condition'] ) ? (int) 1 : 0,
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
 			'update_date'          => date( "Y-m-d H:i:s" )
 		);
@@ -225,6 +231,8 @@ class add_Banner_Extension_Admin_Db {
 			'%d',
 			'%s',
 			'%s',
+			'%s',
+			'%d',
 			'%d',
 			'%s'
 		);
