@@ -64,13 +64,13 @@ class add_Banner_Extension_Admin_Db {
 						'insert_element_class' => $list->insert_element_class,
 						'insert_element_id'    => $list->insert_element_id,
 						'category_id'          => $list->category_id,
-						'how_display'          => 'article',
+						'how_display'          => "article",
 						'condition_setting'    => true,
 						'register_date'        => $list->register_date,
 						'update_date'          => $list->update_date
 					);
 
-					$this->insert_options( $args );
+					$this->insert_exit_data( $args );
 
 				}
 			}
@@ -112,6 +112,32 @@ class add_Banner_Extension_Admin_Db {
 
 		update_option( $text_domain, $options, 'yes' );
 
+	}
+
+	/**
+	 * Insert exiting data
+	 * @since 2.0.0
+	 *
+	 * @param array $args
+	 */
+	private function insert_exit_data ( $args ) {
+		global $wpdb;
+
+		$prepared = array(
+			'%s',
+			'%s',
+			'%s',
+			'%d',
+			'%s',
+			'%s',
+			'%s',
+			'%d',
+			'%d',
+			'%s',
+			'%s'
+		);
+
+		$wpdb->insert( $this->table_name, $args, $prepared );
 	}
 
 	/**
