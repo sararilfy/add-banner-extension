@@ -164,16 +164,32 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="">' . __( 'How display', $this->text_domain ) . ' <span class="description">(' . __( 'required', $this->text_domain ) . ')</span></label></th>';
 		$html .= '<td><fieldset>';
-		$html .= '<label><input type="radio" name="banner-how-display" id="banner-display-single" value="article" checked="checked">' . __( 'Under article', $this->text_domain ) . '</label><br>';
+
+		$html .= '<label><input type="radio" name="banner-how-display" id="banner-display-single" value="article" ';
+		if ( $options['how_display'] == 'article') {
+			$html .= 'checked="checked"';
+		}
+		$html .= '>' . __( 'Under article', $this->text_domain ) . '</label><br>';
 		$html .= '<label>';
-		$html .= '<input type="radio" name="banner-how-display" id="banner-display-shortcode" value="shortcode">' . __( 'ShortCode', $this->text_domain );
+		$html .= '<input type="radio" name="banner-how-display" id="banner-display-shortcode" value="shortcode" ';
+		if ( $options['how_display'] == 'shortcode') {
+			$html .= 'checked="checked"';
+		}
+		$html .= '>' . __( 'ShortCode', $this->text_domain );
 		$html .= '</label>';
+
 		$html .= '</fieldset></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="">' . __( 'Condition', $this->text_domain ) . '</label></th>';
 		$html .= '<td><label>';
-		$html .= '<input name="banner-condition" type="checkbox" id="banner-condition" value="1" checked>' . __( 'Filter by condition', $this->text_domain );
+
+		if ( !isset( $options['condition_category'] ) || $options['condition_category'] == 0 ) {
+			$html .= '<input name="banner-condition-category" type="checkbox" id="banner-condition-category" value="0">' . __( 'Filter by condition', $this->text_domain );
+		} else {
+			$html .= '<input name="banner-condition-category" type="checkbox" id="banner-condition-category" value="1" checked>' . __( 'Filter by condition', $this->text_domain );
+		}
+
 		$html .= '</label>';
 		$html .= '</td>';
 		$html .= '</tr>';

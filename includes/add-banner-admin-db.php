@@ -63,9 +63,9 @@ class add_Banner_Extension_Admin_Db {
 						'open_new_tab'         => $list->open_new_tab,
 						'insert_element_class' => $list->insert_element_class,
 						'insert_element_id'    => $list->insert_element_id,
-						'category_id'          => $list->category_id,
 						'how_display'          => "article",
-						'condition_setting'    => true,
+						'condition_category'   => true,
+						'category_id'          => $list->category_id,
 						'register_date'        => $list->register_date,
 						'update_date'          => $list->update_date
 					);
@@ -99,7 +99,7 @@ class add_Banner_Extension_Admin_Db {
 		$query .= "insert_element_class TINYTEXT,";
 		$query .= "insert_element_id TINYTEXT,";
 		$query .= "how_display TINYTEXT,";
-		$query .= "condition_setting BOOLEAN DEFAULT FALSE,";
+		$query .= "condition_category BOOLEAN DEFAULT FALSE,";
 		$query .= "category_id BIGINT,";
 		$query .= "register_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
 		$query .= "update_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,";
@@ -202,7 +202,7 @@ class add_Banner_Extension_Admin_Db {
 			'insert_element_class' => strip_tags( $post['banner-element-class'] ),
 			'insert_element_id'    => strip_tags( $post['banner-element-id'] ),
 			'how_display'          => strip_tags( $post['banner-how-display'] ),
-			'condition_setting'    => isset( $post['banner-condition'] ) ? (int) 1 : 0,
+			'condition_category'   => isset( $post['banner-condition-category'] ) ? (int) 1 : 0,
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
 			'register_date'        => date( "Y-m-d H:i:s" ),
 			'update_date'          => date( "Y-m-d H:i:s" )
@@ -243,7 +243,7 @@ class add_Banner_Extension_Admin_Db {
 			"insert_element_class" => strip_tags( $post['banner-element-class'] ),
 			"insert_element_id"    => strip_tags( $post['banner-element-id'] ),
 			'how_display'          => strip_tags( $post['banner-how-display'] ),
-			'condition_setting'    => isset( $post['banner-condition'] ) ? (int) 1 : 0,
+			'condition_category'   => isset( $post['banner-condition-category'] ) ? (int) 1 : 0,
 			'category_id'          => isset( $post['banner-display-category'] ) ? (int) $post['banner-display-category'] : 0,
 			'update_date'          => date( "Y-m-d H:i:s" )
 		);
