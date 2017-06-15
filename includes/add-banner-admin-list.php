@@ -67,8 +67,8 @@ class add_Banner_Extension_Admin_List {
 		$html .= '<th class="column-primary">' . __( 'Image', $this->text_domain ) . '</th>';
 		$html .= '<th>' . __( 'Image Alt Text', $this->text_domain ) . '</th>';
 		$html .= '<th>' . __( 'Link URL', $this->text_domain ) . '</th>';
-		$html .= '<th class="column-categories">' . __( 'Condition', $this->text_domain ) . '</th>';
 		$html .= '<th class="add-banner-extension-list-how-display">' . __( 'How display', $this->text_domain ) . '</th>';
+		$html .= '<th class="column-categories">' . __( 'Condition', $this->text_domain ) . '</th>';
 		$html .= '</thead>';
 		$html .= '</tr>';
 		echo $html;
@@ -91,6 +91,10 @@ class add_Banner_Extension_Admin_List {
 				$html .= '</td>';
 				$html .= '<td data-colname="' . __( 'Image Alt Text', $this->text_domain ) . '">' . esc_html( $row->image_alt ) . '</td>';
 				$html .= '<td data-colname="' . __( 'Link URL', $this->text_domain ) . '">' . esc_html( $row->link_url ) . '</td>';
+				$html .= '<td data-colname="' . __( 'How display', $this->text_domain ) . '">';
+				$html .= 'Under article or<br>';
+				$html .= 'ShortCode<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $row->id ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $row->category_id ) . '&quot;]" class="large-text code">';
+				$html .= '</td>';
 				$html .= '<td data-colname="' . __( 'Condition', $this->text_domain ) . '">';
 
 //				if ( $row->condition_category == 1 ) {
@@ -100,16 +104,12 @@ class add_Banner_Extension_Admin_List {
 //				}
 
 				$html .= '</td>';
-				$html .= '<td data-colname="' . __( 'Display place', $this->text_domain ) . '">';
-				$html .= 'Under article or<br>';
-				$html .= 'ShortCode<input type="text" readonly="readonly" value="[add-banner-extension id=&quot;' . esc_attr( $row->id ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $row->category_id ) . '&quot;]" class="large-text code">';
-				$html .= '</td>';
 				$html .= '</tr>';
 				echo $html;
 			}
 
 		} else {
-			echo '<td colspan="7">' . __( 'Without registration', $this->text_domain ) . '</td>';
+			echo '<td colspan="5">' . __( 'Without registration', $this->text_domain ) . '</td>';
 		}
 
 		$html  = '</table>';

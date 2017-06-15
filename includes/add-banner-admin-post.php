@@ -169,13 +169,14 @@ class add_Banner_Extension_Admin_Post {
 		if ( $options['how_display'] == 'article') {
 			$html .= 'checked="checked"';
 		}
-		$html .= '>' . __( 'Under article', $this->text_domain ) . '</label><br>';
+		$html .= '>' . __( 'Output under article', $this->text_domain ) . '</label><br>';
 		$html .= '<label>';
 		$html .= '<input type="radio" name="banner-how-display" id="banner-display-shortcode" value="shortcode" ';
 		if ( $options['how_display'] == 'shortcode') {
 			$html .= 'checked="checked"';
 		}
-		$html .= '>' . __( 'ShortCode', $this->text_domain );
+		$html .= '>' . __( 'Output with ShortCode', $this->text_domain );
+		$html .= '<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $options['id'] ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $options['category_id'] ) . '&quot;]" class="large-text code">';
 		$html .= '</label>';
 
 		$html .= '</fieldset></td>';
@@ -189,7 +190,7 @@ class add_Banner_Extension_Admin_Post {
 		} else {
 			$html .= '<input name="banner-condition-category" type="checkbox" id="banner-condition-category" value="1" checked>' . __( 'Filter by condition', $this->text_domain );
 		}
-
+		$html .= '<p class="description">' . __( 'If not checked, it will appear unconditionally in everything.', $this->text_domain ) . '</p>';
 		$html .= '</label>';
 		$html .= '</td>';
 		$html .= '</tr>';
