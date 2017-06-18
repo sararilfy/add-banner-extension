@@ -68,7 +68,7 @@ class add_Banner_Extension_Admin_List {
 		$html .= '<th>' . __( 'Image Alt Text', $this->text_domain ) . '</th>';
 		$html .= '<th>' . __( 'Link URL', $this->text_domain ) . '</th>';
 		$html .= '<th class="add-banner-extension-list-how-display">' . __( 'How display', $this->text_domain ) . '</th>';
-		$html .= '<th class="column-categories">' . __( 'Condition', $this->text_domain ) . '</th>';
+		$html .= '<th class="column-categories">' . __( 'Filter', $this->text_domain ) . '</th>';
 		$html .= '</thead>';
 		$html .= '</tr>';
 		echo $html;
@@ -95,12 +95,12 @@ class add_Banner_Extension_Admin_List {
 				$html .= 'Under article or<br>';
 				$html .= 'ShortCode<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $row->id ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $row->category_id ) . '&quot;]" class="large-text code">';
 				$html .= '</td>';
-				$html .= '<td data-colname="' . __( 'Condition', $this->text_domain ) . '">';
+				$html .= '<td data-colname="' . __( 'Filter', $this->text_domain ) . '">';
 
 //				if ( $row->condition_category == 1 ) {
 					$html .= esc_html( get_the_category_by_ID( $row->category_id ) );
 //				} elseif ( $row->condition_category == 0 ) {
-					$html .= __( 'Do not filter by condition', $this->text_domain );
+					$html .= __( 'Do not filter by category', $this->text_domain );
 //				}
 
 				$html .= '</td>';

@@ -45,9 +45,9 @@ class add_Banner_Extension_Admin_Post {
 			"open_new_tab"          => 0,
 			"insert_element_class"  => "",
 			"insert_element_id"     => "",
-			"category_id"           => 0,
 			"how_display"           => "article",
-			"condition"             => 0
+			"filter_category"       => 0,
+			"category_id"           => 0
 		);
 
 		/** Key Set */
@@ -170,25 +170,25 @@ class add_Banner_Extension_Admin_Post {
 			$html .= 'checked="checked"';
 		}
 		$html .= '>' . __( 'Output under article', $this->text_domain ) . '</label><br>';
-		$html .= '<label>';
+		$html .= '<label class="add-banner-extension-post-label-switch">';
 		$html .= '<input type="radio" name="banner-how-display" id="banner-display-shortcode" value="shortcode" ';
 		if ( $options['how_display'] == 'shortcode') {
 			$html .= 'checked="checked"';
 		}
 		$html .= '>' . __( 'Output with ShortCode', $this->text_domain );
-		$html .= '<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $options['id'] ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $options['category_id'] ) . '&quot;]" class="large-text code">';
 		$html .= '</label>';
+		$html .= '<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $options['id'] ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $options['category_id'] ) . '&quot;]" class="large-text code">';
 
 		$html .= '</fieldset></td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
-		$html .= '<th scope="row"><label for="">' . __( 'Condition', $this->text_domain ) . '</label></th>';
+		$html .= '<th scope="row"><label>' . __( 'Filter', $this->text_domain ) . '</label></th>';
 		$html .= '<td><label>';
 
-		if ( !isset( $options['condition_category'] ) || $options['condition_category'] == 0 ) {
-			$html .= '<input name="banner-condition-category" type="checkbox" id="banner-condition-category" value="0">' . __( 'Filter by condition', $this->text_domain );
+		if ( !isset( $options['filter_category'] ) || $options['filter_category'] == 0 ) {
+			$html .= '<input name="banner-filter-category" type="checkbox" id="banner-filter-category" value="0">' . __( 'Filter by category', $this->text_domain );
 		} else {
-			$html .= '<input name="banner-condition-category" type="checkbox" id="banner-condition-category" value="1" checked>' . __( 'Filter by condition', $this->text_domain );
+			$html .= '<input name="banner-filter-category" type="checkbox" id="banner-filter-category" value="1" checked>' . __( 'Filter by category', $this->text_domain );
 		}
 		$html .= '<p class="description">' . __( 'If not checked, it will appear unconditionally in everything.', $this->text_domain ) . '</p>';
 		$html .= '</label>';
