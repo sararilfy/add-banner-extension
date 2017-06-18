@@ -174,14 +174,26 @@ class add_Banner_Extension_Admin_Db {
 	 *
 	 * @since  1.0.0
 	 * @param  integer $category_id
-	 * @return array   $args
+	 * @return array
 	 */
 	public function get_categories ( $category_id ) {
 		global $wpdb;
-		$query    = "SELECT * FROM " . $this->table_name . " WHERE category_id = %d";
+		$query    = "SELECT * FROM " . $this->table_name . " WHERE category_id = %d AND filter_category = 1";
 		$data     = array( $category_id );
 		$prepared = $wpdb->prepare( $query, $data );
 		return (array) $wpdb->get_results( $prepared );
+	}
+
+	/**
+	 * Get Not filter data.
+	 *
+	 * @since  2.0.0
+	 * @return array
+	 */
+	public function get_not_filter () {
+		global $wpdb;
+		$query = "SELECT * FROM " . $this->table_name . " WHERE filter_category = 0";
+		return (array) $wpdb->get_results( $query );
 	}
 
 	/**
