@@ -53,7 +53,7 @@ class add_Banner_Extension_Admin_List {
 		$html  = '';
 		$html .= '<div class="wrap">';
 		$html .= '<h1 class="wp-heading-inline">' . __( 'All Banner List', $this->text_domain ) . '</h1>';
-		$html .= '<a href="' . admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php" class="page-title-action">' . __( 'Add New', $this->text_domain ) . '</a>';
+		$html .= '<a href="' . $post_url . '" class="page-title-action">' . __( 'Add New', $this->text_domain ) . '</a>';
 		$html .= '<hr class="wp-header-end">';
 		echo $html;
 
