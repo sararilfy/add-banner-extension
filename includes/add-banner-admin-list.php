@@ -92,16 +92,21 @@ class add_Banner_Extension_Admin_List {
 				$html .= '<td data-colname="' . __( 'Image Alt Text', $this->text_domain ) . '">' . esc_html( $row->image_alt ) . '</td>';
 				$html .= '<td data-colname="' . __( 'Link URL', $this->text_domain ) . '">' . esc_html( $row->link_url ) . '</td>';
 				$html .= '<td data-colname="' . __( 'How display', $this->text_domain ) . '">';
-				$html .= 'Under article or<br>';
-				$html .= 'ShortCode<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $row->id ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $row->category_id ) . '&quot;]" class="large-text code">';
+
+				if ( $row->how_display == 'article' ) {
+					$html .= 'Under article';
+				} elseif ( $row->how_display == 'shortcode' ) {
+					$html .= 'ShortCode<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $row->id ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $row->category_id ) . '&quot;]" class="large-text code">';
+				}
+
 				$html .= '</td>';
 				$html .= '<td data-colname="' . __( 'Filter', $this->text_domain ) . '">';
 
-//				if ( $row->condition_category == 1 ) {
+				if ( isset( $row->filter_category ) && $row->filter_category == 1 ) {
 					$html .= esc_html( get_the_category_by_ID( $row->category_id ) );
-//				} elseif ( $row->condition_category == 0 ) {
+				} else {
 					$html .= __( 'Do not filter by category', $this->text_domain );
-//				}
+				}
 
 				$html .= '</td>';
 				$html .= '</tr>';
