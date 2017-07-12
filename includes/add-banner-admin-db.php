@@ -172,9 +172,10 @@ class add_Banner_Extension_Admin_Db {
 	/**
 	 * Get Category.
 	 *
-	 * @since  1.0.0
-	 * @param  integer $category_id
-	 * @return array
+	 * @version 2.0.0
+	 * @since   1.0.0
+	 * @param   integer $category_id
+	 * @return  array
 	 */
 	public function get_categories ( $category_id ) {
 		global $wpdb;

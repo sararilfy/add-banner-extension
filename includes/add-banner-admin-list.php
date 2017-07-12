@@ -41,10 +41,10 @@ class add_Banner_Extension_Admin_List {
 	/**
 	 * LIST Page HTML Render
 	 *
-	 * @version  1.2.0
-	 * @since  1.0.0
-	 * @param add_Banner_Extension_Admin_Db $db
-	 * @param String $mode
+	 * @version 2.0.0
+	 * @since   1.0.0
+	 * @param   add_Banner_Extension_Admin_Db $db
+	 * @param   String $mode
 	 */
 	private function page_render ( add_Banner_Extension_Admin_Db $db, $mode = "" ) {
 		$post_url = admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php';

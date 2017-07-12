@@ -159,7 +159,7 @@ class add_Banner_Extension {
 	/**
 	 * Display Banner
 	 *
-	 * @version 1.0.0
+	 * @version 2.0.0
 	 * @since   1.0.0
 	 * @param   string $content
 	 * @return  string $content
