@@ -3,7 +3,7 @@
 Plugin Name: Add Banner Extension
 Plugin URI: https://github.com/sararilfy/add-banner-extension
 Description: Register an image from the administration screen, and a different banner image is displayed for each category.
-Version: 1.0.2
+Version: 2.0.0
 Author: Yoshie Nakayama
 License: GPLv2 or later
 Text Domain: add-banner-extension
@@ -19,7 +19,7 @@ class add_Banner_Extension {
 	 *
 	 * @var string
 	 */
-	private $version = '1.0.2';
+	private $version = '2.0.0';
 
 	/**
 	 * Text Domain.
@@ -36,7 +36,7 @@ class add_Banner_Extension {
 	 */
 	public function __construct() {
 		register_activation_hook( __FILE__, array( $this, 'create_table' ) );
-//		add_shortcode( $this->text_domain, array( $this, 'short_code_init' ) );
+		add_shortcode( $this->text_domain, array( $this, 'short_code_init' ) );
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
 		if ( is_admin() ) {
@@ -242,7 +242,7 @@ class add_Banner_Extension {
 	 * @return string
 	 */
 	public function short_code_init ( $args ) {
-		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-short-code.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-short-code.php' );
 		$obj = new Add_Banner_Extension_ShortCode( $this->text_domain, $args );
 		return $obj->short_code_display( $args );
 	}
