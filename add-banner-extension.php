@@ -36,6 +36,7 @@ class add_Banner_Extension {
 	 */
 	public function __construct() {
 		register_activation_hook( __FILE__, array( $this, 'create_table' ) );
+//		add_shortcode( $this->text_domain, array( $this, 'short_code_init' ) );
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
 		if ( is_admin() ) {
@@ -231,4 +232,19 @@ class add_Banner_Extension {
 
 		return $html;
 	}
+
+	/**
+	 * ShortCode Register.
+	 *
+	 * version 2.0.0
+	 * @since  2.0.0
+	 * @param  string $args short code params
+	 * @return string
+	 */
+	public function short_code_init ( $args ) {
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-short-code.php' );
+		$obj = new Add_Banner_Extension_ShortCode( $this->text_domain, $args );
+		return $obj->short_code_display( $args );
+	}
+
 }
