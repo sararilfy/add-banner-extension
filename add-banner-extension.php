@@ -241,7 +241,6 @@ class add_Banner_Extension {
 	 * @return string
 	 */
 	public function short_code_init ( $args ) {
-		$db = new add_Banner_Extension_Admin_Db();
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-short-code.php' );
 		$obj = new Add_Banner_Extension_ShortCode( $this->text_domain, $args );
 		return $obj->short_code_display( $args );
