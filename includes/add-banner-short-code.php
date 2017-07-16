@@ -36,7 +36,9 @@ class Add_Banner_Extension_ShortCode {
 			shortcode_atts(
 				array (
 					'id'              => "",
-					'title'           => ""
+					'title'           => "",
+					'filter_category' => "",
+					'category_id'     => ""
 				),
 				$args,
 				$this->text_domain
@@ -47,24 +49,36 @@ class Add_Banner_Extension_ShortCode {
 		$db = new add_Banner_Extension_Admin_Db();
 		$banner = $db->get_options( $args['id'] );
 
+		if ( array_key_exists( 'filter_category', $args ) && $args['filter_category'] != '' ) {
+			$filter_category = $args['filter_category'];
+		} else {
+			$filter_category = $banner['filter_category'];
+		}
+
+		if ( array_key_exists ( 'category_id', $args ) && $args['category_id'] != '' ) {
+			$category_id = $args['category_id'];
+		} else {
+			$category_id = $banner['category_id'];
+		}
+
 		$html = '';
 
-		if ( $banner['filter_category'] == '1' ) {
-			if ( !is_single() || !is_category() ) {
-				return $html;
-			}
+		if ( $filter_category == '1' ) {
+			if ( is_single() || is_category() ) {
 
-			$categories = get_the_category();
+				$categories = get_the_category();
 
-			if ( count( $categories ) > 0 ) {
+				if ( count( $categories ) > 0 ) {
 
-				if ( $categories[0]->cat_ID == $banner['category_id'] ) {
-					$html .= $this->banner_create( $banner );
+					if ( $categories[0]->cat_ID == $category_id ) {
+						$html .= $this->banner_create( $banner );
+					}
+
 				}
 
 			}
 
-		} elseif ( $banner['filter_category'] == '0' ) {
+		} elseif ( $filter_category == '0' ) {
 			$html .= $this->banner_create( $banner );
 		}
 
@@ -79,7 +93,7 @@ class Add_Banner_Extension_ShortCode {
 	 * Banner Create.
 	 *
 	 * @since 2.0.0
-	 * @param object $options
+	 * @param array $options
 	 * @return string $html
 	 */
 	private function banner_create ( $options ) {
