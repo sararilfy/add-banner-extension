@@ -15,10 +15,11 @@ class add_Banner_Extension_Uninstall {
 	 * Constructor Define.
 	 *
 	 * @since   1.0.0
-	 * @version 1.0.0
+	 * @version 2.0.0
 	 */
 	public function __construct () {
 		$this->drop_table();
+		delete_option( 'add_banner_extension' );
 	}
 	/**
 	 * Drop Table.
