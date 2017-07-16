@@ -177,7 +177,11 @@ class add_Banner_Extension_Admin_Post {
 		}
 		$html .= '>' . __( 'Output with ShortCode', $this->text_domain );
 		$html .= '</label>';
-		$html .= '<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $options['id'] ) . '&quot; filter=&quot;1&quot; category=&quot;' . esc_attr( $options['category_id'] ) . '&quot;]" class="large-text code">';
+		$html .= '<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $options['id'] ) . '&quot; filter=&quot;' . esc_attr( $options['filter_category'] ) . '&quot;';
+		if ( !isset( $options['filter_category'] ) && $options['filter_category'] == 1 ) {
+			$html .= ' category_id=&quot;' . esc_attr( $options['category_id'] ) . '&quot;';
+		}
+		$html .= ']" class="large-text code">';
 
 		$html .= '</fieldset></td>';
 		$html .= '</tr>';
