@@ -180,7 +180,7 @@ class add_Banner_Extension_Admin_Post {
 
 		if ( isset( $options['id'] ) && is_numeric( $options['id'] ) ) {
 			$html .= '<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $options['id'] ) . '&quot; image_alt=&quot;' . esc_attr($options['image_alt']) . '&quot; filter_category=&quot;' . esc_attr($options['filter_category']) . '&quot;';
-			if ( !isset($options['filter_category']) && $options['filter_category'] == 1 ) {
+			if ( isset($options['filter_category']) && $options['filter_category'] == 1 ) {
 				$html .= ' category_id=&quot;' . esc_attr( $options['category_id'] ) . '&quot;';
 			}
 			$html .= ']" class="large-text code">';

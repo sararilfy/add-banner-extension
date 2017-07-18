@@ -49,47 +49,50 @@ class Add_Banner_Extension_ShortCode {
 		$db = new add_Banner_Extension_Admin_Db();
 		$banner = $db->get_options( $args['id'] );
 
-		if ( array_key_exists( 'image_alt', $args ) && $args['image_alt'] != '' ) {
-			$image_alt = $args['image_alt'];
-		} else {
-			$image_alt = $banner['image_alt'];
-		}
+		if ( !empty( $banner ) ) {
 
-		if ( array_key_exists( 'filter_category', $args ) && $args['filter_category'] != '' ) {
-			$filter_category = $args['filter_category'];
-		} else {
-			$filter_category = $banner['filter_category'];
-		}
+			if (array_key_exists('image_alt', $args) && $args['image_alt'] != '') {
+				$image_alt = $args['image_alt'];
+			} else {
+				$image_alt = $banner['image_alt'];
+			}
 
-		if ( array_key_exists ( 'category_id', $args ) && $args['category_id'] != '' ) {
-			$category_id = $args['category_id'];
-		} else {
-			$category_id = $banner['category_id'];
-		}
+			if (array_key_exists('filter_category', $args) && $args['filter_category'] != '') {
+				$filter_category = $args['filter_category'];
+			} else {
+				$filter_category = $banner['filter_category'];
+			}
 
-		$html = '';
+			if (array_key_exists('category_id', $args) && $args['category_id'] != '') {
+				$category_id = $args['category_id'];
+			} else {
+				$category_id = $banner['category_id'];
+			}
 
-		if ( $filter_category == '1' ) {
-			if ( is_single() || is_category() ) {
+			$html = '';
 
-				$categories = get_the_category();
+			if ($filter_category == '1') {
+				if (is_single() || is_category()) {
 
-				if ( count( $categories ) > 0 ) {
+					$categories = get_the_category();
 
-					if ( $categories[0]->cat_ID == $category_id ) {
-						$html .= $this->banner_create( $banner, $image_alt );
+					if (count($categories) > 0) {
+
+						if ($categories[0]->cat_ID == $category_id) {
+							$html .= $this->banner_create($banner, $image_alt);
+						}
+
 					}
 
 				}
 
+			} elseif ($filter_category == '0') {
+				$html .= $this->banner_create($banner, $image_alt);
 			}
 
-		} elseif ( $filter_category == '0' ) {
-			$html .= $this->banner_create( $banner, $image_alt );
+			return (string) $html;
+
 		}
-
-
-		return (string) $html;
 
 	}
 
