@@ -20,6 +20,10 @@ Admin: All Banner List
 	margin: 0 0 5px;
 }
 
+.add-banner-extension-list-how-display {
+	width: 40%;
+}
+
 @media screen and (max-width: 782px) {
 
 	.add-banner-extension-list-table td {

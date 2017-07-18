@@ -3,7 +3,7 @@
 Plugin Name: Add Banner Extension
 Plugin URI: https://github.com/sararilfy/add-banner-extension
 Description: Register an image from the administration screen, and a different banner image is displayed for each category.
-Version: 1.0.2
+Version: 2.0.0
 Author: Yoshie Nakayama
 License: GPLv2 or later
 Text Domain: add-banner-extension
@@ -19,7 +19,7 @@ class add_Banner_Extension {
 	 *
 	 * @var string
 	 */
-	private $version = '1.0.2';
+	private $version = '2.0.0';
 
 	/**
 	 * Text Domain.
@@ -36,6 +36,7 @@ class add_Banner_Extension {
 	 */
 	public function __construct() {
 		register_activation_hook( __FILE__, array( $this, 'create_table' ) );
+		add_shortcode( $this->text_domain, array( $this, 'short_code_init' ) );
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
 		if ( is_admin() ) {
@@ -54,7 +55,7 @@ class add_Banner_Extension {
 	 */
 	public function create_table () {
 		$db = new add_Banner_Extension_Admin_Db();
-		$db->create_table();
+		$db->create_table( $this->text_domain, $this->version );
 	}
 
 	/**
@@ -159,7 +160,7 @@ class add_Banner_Extension {
 	/**
 	 * Display Banner
 	 *
-	 * @version 1.0.0
+	 * @version 2.0.0
 	 * @since   1.0.0
 	 * @param   string $content
 	 * @return  string $content
@@ -171,46 +172,78 @@ class add_Banner_Extension {
 		}
 
 		$html = '';
+
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-db.php' );
+		$db = new add_Banner_Extension_Admin_Db();
+
+		$args = $db->get_not_filter();
+		foreach ( $args as $value ) {
+			$html .= $this->banner_create( $value );
+		}
+
 		$categories = get_the_category();
 
 		if ( count( $categories ) > 0 ) {
-
-			require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-admin-db.php' );
-			$db = new add_Banner_Extension_Admin_Db();
 			$args = $db->get_categories( $categories[0]->cat_ID );
 
 			foreach ( $args as $value ) {
-
-				$html .= '<div class="add-banner-extension-wrapper">';
-				if ( !empty( $value->link_url ) ) {
-					if ( $value->open_new_tab == 1 ) {
-						$html .= '<a href="' . esc_url( $value->link_url ) . '" target="_blank">';
-					} else {
-						$html .= '<a href="' . esc_url( $value->link_url ) . '">';
-					}
-				}
-
-				$html .= '<img src="' . esc_url( $value->image_url ) . '" alt="' . esc_attr( $value->image_alt ) . '"';
-
-				if ( !empty( $value->insert_element_class ) ) {
-					$html .= ' class="' . esc_attr( $value->insert_element_class ) . '"';
-				}
-
-				if ( !empty( $value->insert_element_id ) ) {
-					$html .= ' id="' . esc_attr( $value->insert_element_id ) . '"';
-				}
-
-				$html .= '>';
-
-				if ( !empty( $value->image_url ) ) {
-					$html .= '</a>';
-				}
-				$html .= '</div>';
-
+				$html .= $this->banner_create( $value );
 			}
 
 		}
 
 		return $content . $html;
 	}
+
+	/**
+	 * Banner Create.
+	 *
+	 * @since   1.0.0
+	 * @param object $value
+	 * @return string $html
+	 */
+	private function banner_create ( $value ) {
+
+		$html = '<div class="add-banner-extension-wrapper">';
+		if ( !empty( $value->link_url ) ) {
+			if ( $value->open_new_tab == 1 ) {
+				$html .= '<a href="' . esc_url( $value->link_url ) . '" target="_blank">';
+			} else {
+				$html .= '<a href="' . esc_url( $value->link_url ) . '">';
+			}
+		}
+
+		$html .= '<img src="' . esc_url( $value->image_url ) . '" alt="' . esc_attr( $value->image_alt ) . '"';
+
+		if ( !empty( $value->insert_element_class ) ) {
+			$html .= ' class="' . esc_attr( $value->insert_element_class ) . '"';
+		}
+
+		if ( !empty( $value->insert_element_id ) ) {
+			$html .= ' id="' . esc_attr( $value->insert_element_id ) . '"';
+		}
+
+		$html .= '>';
+
+		if ( !empty( $value->image_url ) ) {
+			$html .= '</a>';
+		}
+		$html .= '</div>';
+
+		return $html;
+	}
+
+	/**
+	 * ShortCode Register.
+	 *
+	 * @since  2.0.0
+	 * @param  string $args short code params
+	 * @return string
+	 */
+	public function short_code_init ( $args ) {
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/add-banner-short-code.php' );
+		$obj = new Add_Banner_Extension_ShortCode( $this->text_domain, $args );
+		return $obj->short_code_display( $args );
+	}
+
 }

@@ -41,9 +41,10 @@ class add_Banner_Extension_Admin_List {
 	/**
 	 * LIST Page HTML Render
 	 *
-	 * @since  1.0.0
-	 * @param add_Banner_Extension_Admin_Db $db
-	 * @param String $mode
+	 * @version 2.0.0
+	 * @since   1.0.0
+	 * @param   add_Banner_Extension_Admin_Db $db
+	 * @param   String $mode
 	 */
 	private function page_render ( add_Banner_Extension_Admin_Db $db, $mode = "" ) {
 		$post_url = admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php';
@@ -52,7 +53,7 @@ class add_Banner_Extension_Admin_List {
 		$html  = '';
 		$html .= '<div class="wrap">';
 		$html .= '<h1 class="wp-heading-inline">' . __( 'All Banner List', $this->text_domain ) . '</h1>';
-		$html .= '<a href="' . admin_url() . 'admin.php?page=add-banner-extension/includes/add-banner-admin-post.php" class="page-title-action">' . __( 'Add New', $this->text_domain ) . '</a>';
+		$html .= '<a href="' . $post_url . '" class="page-title-action">' . __( 'Add New', $this->text_domain ) . '</a>';
 		$html .= '<hr class="wp-header-end">';
 		echo $html;
 
@@ -65,11 +66,8 @@ class add_Banner_Extension_Admin_List {
 		$html .= '<thead>';
 		$html .= '<th class="column-primary">' . __( 'Image', $this->text_domain ) . '</th>';
 		$html .= '<th>' . __( 'Image Alt Text', $this->text_domain ) . '</th>';
-		$html .= '<th>' . __( 'Link URL', $this->text_domain ) . '</th>';
-		$html .= '<th>' . __( 'Open New Tab', $this->text_domain ) . '</th>';
-		$html .= '<th>' . __( 'Class Name', $this->text_domain ) . '</th>';
-		$html .= '<th>' . __( 'Id Name', $this->text_domain ) . '</th>';
-		$html .= '<th class="column-categories">' . __( 'Display Category', $this->text_domain ) . '</th>';
+		$html .= '<th class="add-banner-extension-list-how-display">' . __( 'How display', $this->text_domain ) . '</th>';
+		$html .= '<th class="column-categories">' . __( 'Filter', $this->text_domain ) . '</th>';
 		$html .= '</thead>';
 		$html .= '</tr>';
 		echo $html;
@@ -91,25 +89,34 @@ class add_Banner_Extension_Admin_List {
 				$html .= '<button type="button" class="toggle-row"><span class="screen-reader-text">' . __( 'Show more details', $this->text_domain ) . '</span></button>';
 				$html .= '</td>';
 				$html .= '<td data-colname="' . __( 'Image Alt Text', $this->text_domain ) . '">' . esc_html( $row->image_alt ) . '</td>';
-				$html .= '<td data-colname="' . __( 'Link URL', $this->text_domain ) . '">' . esc_html( $row->link_url ) . '</td>';
-				$html .= '<td data-colname="' . __( 'Open New Tab', $this->text_domain ) . '">';
+				$html .= '<td data-colname="' . __( 'How display', $this->text_domain ) . '">';
 
-				if ( esc_html( $row->open_new_tab ) == 1 ) {
-					$html .= __( 'ON', $this->text_domain );
-				} else {
-					$html .= __( 'OFF', $this->text_domain );
+				if ( $row->how_display == 'article' ) {
+					$html .= 'Under article';
+				} elseif ( $row->how_display == 'shortcode' ) {
+					$html .= 'ShortCode<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $row->id ) . '&quot; image_alt=&quot' . esc_attr( $row->image_alt ) . '&quot filter_category=&quot;' . esc_attr( $row->filter_category ) . '&quot;';
+					if ( isset( $row->filter_category ) && $row->filter_category == 1 ) {
+						$html .= ' category_id=&quot;' . esc_attr($row->category_id) . '&quot;';
+					}
+					$html .= ']" class="large-text code">';
 				}
 
 				$html .= '</td>';
-				$html .= '<td data-colname="' . __( 'Class Name', $this->text_domain ) . '">' . esc_html( $row->insert_element_class ) . '</td>';
-				$html .= '<td data-colname="' . __( 'Id Name', $this->text_domain ) . '">' . esc_html( $row->insert_element_id ) . '</td>';
-				$html .= '<td data-colname="' . __( 'Display Category', $this->text_domain ) . '">' . esc_html( get_the_category_by_ID( $row->category_id ) ) . '</td>';
+				$html .= '<td data-colname="' . __( 'Filter', $this->text_domain ) . '">';
+
+				if ( isset( $row->filter_category ) && $row->filter_category == 1 ) {
+					$html .= esc_html( get_the_category_by_ID( $row->category_id ) );
+				} else {
+					$html .= __( 'Do not filter by category', $this->text_domain );
+				}
+
+				$html .= '</td>';
 				$html .= '</tr>';
 				echo $html;
 			}
 
 		} else {
-			echo '<td colspan="7">' . __( 'Without registration', $this->text_domain ) . '</td>';
+			echo '<td colspan="4">' . __( 'Without registration', $this->text_domain ) . '</td>';
 		}
 
 		$html  = '</table>';

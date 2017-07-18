@@ -4,6 +4,7 @@
  * Class add_Banner_Extension_Admin_Post
  *
  * @author Yoshie Nakayama
+ * @version  2.0.0
  * @since  1.0.0
  */
 class add_Banner_Extension_Admin_Post {
@@ -44,6 +45,8 @@ class add_Banner_Extension_Admin_Post {
 			"open_new_tab"          => 0,
 			"insert_element_class"  => "",
 			"insert_element_id"     => "",
+			"how_display"           => "article",
+			"filter_category"       => 0,
 			"category_id"           => 0
 		);
 
@@ -95,6 +98,7 @@ class add_Banner_Extension_Admin_Post {
 
 		$html  = '<form method="post" action="">';
 		$html .= '<input type="hidden" name="add_banner_extension_id" value="' . esc_attr( $options['id'] ) . '">';
+		$html .= '<h2 class="wp-heading-inline">' . __( 'Banner Setting', $this->text_domain ) . '</h2>';
 		$html .= '<table class="form-table">';
 		$html .= '<tr>';
 		$html .= '<th scope="row"><label for="banner-image-url">' . __( 'Image URL', $this->text_domain ) . ' <span class="description">(' . __( 'required', $this->text_domain ) . ')</span></label></th>';
@@ -150,6 +154,51 @@ class add_Banner_Extension_Admin_Post {
 		$html .= '<td>';
 		$html .= '<input name="banner-element-id" type="text" id="banner-element-id" value="' . esc_attr( $options['insert_element_id'] ) . '" class="regular-text">';
 		$html .= '<p class="description">' . __( 'You can add the id in the banner image. "id=" is unnecessary.', $this->text_domain ) . '</p>';
+		$html .= '</td>';
+		$html .= '</tr>';
+		$html .= '</table>';
+
+		$html .= '<h2 class="wp-heading-inline">' . __( 'Display Setting', $this->text_domain ) . '</h2>';
+
+		$html .= '<table class="form-table">';
+		$html .= '<tr>';
+		$html .= '<th scope="row"><label for="">' . __( 'How display', $this->text_domain ) . ' <span class="description">(' . __( 'required', $this->text_domain ) . ')</span></label></th>';
+		$html .= '<td><fieldset>';
+
+		$html .= '<label><input type="radio" name="banner-how-display" id="banner-display-single" value="article" ';
+		if ( $options['how_display'] == 'article') {
+			$html .= 'checked="checked"';
+		}
+		$html .= '>' . __( 'Output under article', $this->text_domain ) . '</label><br>';
+		$html .= '<label class="add-banner-extension-post-label-switch">';
+		$html .= '<input type="radio" name="banner-how-display" id="banner-display-shortcode" value="shortcode" ';
+		if ( $options['how_display'] == 'shortcode') {
+			$html .= 'checked="checked"';
+		}
+		$html .= '>' . __( 'Output with ShortCode', $this->text_domain );
+		$html .= '</label>';
+
+		if ( isset( $options['id'] ) && is_numeric( $options['id'] ) ) {
+			$html .= '<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $options['id'] ) . '&quot; image_alt=&quot;' . esc_attr($options['image_alt']) . '&quot; filter_category=&quot;' . esc_attr($options['filter_category']) . '&quot;';
+			if ( isset($options['filter_category']) && $options['filter_category'] == 1 ) {
+				$html .= ' category_id=&quot;' . esc_attr( $options['category_id'] ) . '&quot;';
+			}
+			$html .= ']" class="large-text code">';
+		}
+
+		$html .= '</fieldset></td>';
+		$html .= '</tr>';
+		$html .= '<tr>';
+		$html .= '<th scope="row"><label>' . __( 'Filter', $this->text_domain ) . '</label></th>';
+		$html .= '<td><label>';
+
+		if ( !isset( $options['filter_category'] ) || $options['filter_category'] == 0 ) {
+			$html .= '<input name="banner-filter-category" type="checkbox" id="banner-filter-category" value="0">' . __( 'Filter by category', $this->text_domain );
+		} else {
+			$html .= '<input name="banner-filter-category" type="checkbox" id="banner-filter-category" value="1" checked>' . __( 'Filter by category', $this->text_domain );
+		}
+		$html .= '<p class="description">' . __( 'If not checked, it will appear unconditionally in everything and Items of "Display Category" are ignored.', $this->text_domain ) . '</p>';
+		$html .= '</label>';
 		$html .= '</td>';
 		$html .= '</tr>';
 		$html .= '<tr>';
