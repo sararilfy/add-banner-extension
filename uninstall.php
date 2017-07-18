@@ -19,7 +19,7 @@ class add_Banner_Extension_Uninstall {
 	 */
 	public function __construct () {
 		$this->drop_table();
-		delete_option( 'add_banner_extension' );
+		delete_option( 'add-banner-extension' );
 	}
 	/**
 	 * Drop Table.
