@@ -94,7 +94,7 @@ class add_Banner_Extension_Admin_List {
 				if ( $row->how_display == 'article' ) {
 					$html .= 'Under article';
 				} elseif ( $row->how_display == 'shortcode' ) {
-					$html .= 'ShortCode<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $row->id ) . '&quot; image_alt=&quot' . esc_attr( $row->image_alt ) . '&quot filter_category=&quot;' . esc_attr( $row->filter_category ) . '&quot;';
+					$html .= 'ShortCode<input type="text" readonly="readonly" value="[' . $this->text_domain . ' id=&quot;' . esc_attr( $row->id ) . '&quot; image_alt=&quot;' . esc_attr( $row->image_alt ) . '&quot; filter_category=&quot;' . esc_attr( $row->filter_category ) . '&quot;';
 					if ( isset( $row->filter_category ) && $row->filter_category == 1 ) {
 						$html .= ' category_id=&quot;' . esc_attr($row->category_id) . '&quot;';
 					}
