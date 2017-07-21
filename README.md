@@ -2,8 +2,8 @@
 - Contributors: Sararilfy
 - Tags: post, posts, category
 - Requires at least: 4.7.2
-- Tested up to: 4.7.5
-- Stable tag: 1.0.2
+- Tested up to: 4.8
+- Stable tag: 2.0.0
 - License: GPLv2 or later
 
 Register an image from the administration screen, and a different banner image is displayed for each category.
@@ -18,14 +18,14 @@ Since you can change banner images for each category, you can also guide users t
 There is no need to embed same images in articles many times from the posting screen!
 
 ### About functions
-* When you activate the plug-in, "Add banner" menu is added to the left main menu. Please register and edit from there.
+* When you activate the plug-in, "Add banner" menu is added to the left main menu of the administration screen. Please register and edit from there.
 
-* Press the "Choose Image" button to open the Media Uploader.
-Please select an existing image or upload an image.
+* Press the "Choose Image" button to open the Media Uploader.Please select an existing image or upload an image.
 The image URL can also be written as a relative path.
 
-* It is displayed under the body of the posted article linked to the registered category.
-Multiple images can be displayed in the same category.
+* In the "How display", you can choose whether to display it under the body of the posted article or display it with a shortcode.When displaying with shortcode, rewriting the number of shortcode overrides the rewritten one (However, "id" is not displayed unless it matches what you registered on the administration screen).
+
+* If you check "Filter by category", the banner will be displayed on the page linked to the registered category.　Multiple images can be displayed in the same category.　If you do not check it, the banner is displayed unconditionally on all pages.
 
 * You can set class and ID in the image. Please use it for measurement with tag manager and adjustment of style sheet.
 
@@ -40,7 +40,7 @@ You can use it by adjusting the style sheet.
 ### Attention
 
 * Depending on the theme and plugin you are using, the display position of the banner image may change or more than one banner may be displayed. The theme of "Twenty Seventeen" is confirmed to work.
-* Supported Post Types are 'Post' only. Currently, 'Page' and 'Custom Post Types' are not supported. Also, it does not support 'Tags' or 'Custom Taxonomies'.
+* When "Filter by category" is checked, the corresponding post type is post only (post article page and category page). Supported Post Types are 'Post' only. Currently, 'Page' and 'Custom Post Types' are not supported. Also, it does not support 'Tags' or 'Custom Taxonomies'.
 
 ## Installation
 
@@ -51,11 +51,10 @@ You can use it by adjusting the style sheet.
 ## Frequently Asked Questions
 
 ### I want to display the image on the top of the article or sidebar. 
-Currently, it can not be displayed.
-I plan to be able to implement it with Shortcode in the future.
+It is possible to paste the displayed shortcode to the applicable theme.
 
 ### I want to display image on all pages irrespective of categories.
-Currently, if you do not link to categories, it is not displayed.
+When registering a banner, please uncheck "filter by category" and register.
 
 ### What happens when multiple categories are linked to an article? 
 Only one category is selected, and if there is a banner image registering that category, it will be displayed.
@@ -64,7 +63,7 @@ Only one category is selected, and if there is a banner image registering that c
 It does not correspond. I would like to respond in the future.
 
 ### In the "Edit Banner" screen, the category you want to set is not displayed in the category to be displayed.
-It is not displayed unless articles are published in the category.
+If the article is not published in the category, it will not be displayed in the pull-down menu.
 
 ## Screenshots
 
@@ -73,6 +72,10 @@ It is not displayed unless articles are published in the category.
 2. Banner image registration and edit screen. Items : Image URL (required), Image Alt Text (required), Link URL, Open New Tab, Class Name, Id Name, Display Category (required).
 
 ## Changelog
+
+###2.0.0 (2017-07-22)
+* Added ability to display banner with short code
+* Change the display of the banner so that it can be selected by "display with limited by category" or "indication without categorization, unconditionally"
 
 ###1.0.2 (2017-05-19)
 * WordPress version 4.7.5 operation check.

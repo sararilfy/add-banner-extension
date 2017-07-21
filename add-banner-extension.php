@@ -237,7 +237,7 @@ class add_Banner_Extension {
 	 * ShortCode Register.
 	 *
 	 * @since  2.0.0
-	 * @param  string $args short code params
+	 * @param  array $args short code params
 	 * @return string
 	 */
 	public function short_code_init ( $args ) {
