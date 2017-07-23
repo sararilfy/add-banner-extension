@@ -20,12 +20,14 @@ There is no need to embed same images in articles many times from the posting sc
 ### About functions
 * When you activate the plug-in, "Add banner" menu is added to the left main menu of the administration screen. Please register and edit from there.
 
-* Press the "Choose Image" button to open the Media Uploader.Please select an existing image or upload an image.
+* Press the "Choose Image" button at Edit banner page, to open the Media Uploader.Please select an existing image or upload an image.
 The image URL can also be written as a relative path.
 
-* In the "How display", you can choose whether to display it under the body of the posted article or display it with a shortcode.When displaying with shortcode, rewriting the number of shortcode overrides the rewritten one (However, "id" is not displayed unless it matches what you registered on the administration screen).
+* In the "How display", you can choose whether to display it under the body of the posted article or display it with a shortcode.
 
-* If you check "Filter by category", the banner will be displayed on the page linked to the registered category.　Multiple images can be displayed in the same category.　If you do not check it, the banner is displayed unconditionally on all pages.
+* When displaying with shortcode, overwriting the short code number takes precedence. However, "id" is not displayed unless it is registered in the administration screen.
+
+* If you check "Filter by category", banner will be displayed on category page of registered category. Multiple images can be displayed in the same category. If you do not check it, the banner is displayed unconditionally on all pages.
 
 * You can set class and ID in the image. Please use it for measurement with tag manager and adjustment of style sheet.
 
@@ -57,13 +59,13 @@ It is possible to paste the displayed shortcode to the applicable theme.
 When registering a banner, please uncheck "filter by category" and register.
 
 ### What happens when multiple categories are linked to an article? 
-Only one category is selected, and if there is a banner image registering that category, it will be displayed.
+Only one category is automatically selected, and if there is a banner image registering that category, it will be displayed.
 
 ### Do 'Tags' and 'Custom Taxonomies' correspond? 
 It does not correspond. I would like to respond in the future.
 
 ### In the "Edit Banner" screen, the category you want to set is not displayed in the category to be displayed.
-If the article is not published in the category, it will not be displayed in the pull-down menu.
+Categories where articles are not published, it will not be displayed in the pull-down menu.
 
 ## Screenshots
 
@@ -73,7 +75,7 @@ If the article is not published in the category, it will not be displayed in the
 
 ## Changelog
 
-###2.0.0 (2017-07-22)
+###2.0.0 (2017-07-23)
 * Added ability to display banner with short code
 * Change the display of the banner so that it can be selected by "display with limited by category" or "indication without categorization, unconditionally"
 
