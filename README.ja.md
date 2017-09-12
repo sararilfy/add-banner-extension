@@ -2,8 +2,8 @@
 - Contributors: Sararilfy
 - Tags: post, posts, category
 - Requires at least: 4.7.2
-- Tested up to: 4.8
-- Stable tag: 2.0.0
+- Tested up to: 4.8.1
+- Stable tag: 2.0.1
 - License: GPLv2 or later
 
 管理画面から画像を登録すると、記事に紐づいたカテゴリーごとに異なるバナー画像を表示します。
@@ -66,6 +66,9 @@ Read this in other languages: <a href="./README.ja.md">日本語</a>
 
 
 ## 変更ログ
+
+###2.0.1 (2017-09-12) =
+* WordPress バージョン 4.8.1 動作チェック
 
 ###2.0.0 (2017-07-23)
 * ショートコードでバナーを表示できる機能追加
