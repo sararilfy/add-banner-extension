@@ -75,20 +75,23 @@ Categories where articles are not published, it will not be displayed in the pul
 
 ## Changelog
 
-###2.0.2 (2017-09-12) =
+### 2.0.3 (2017-10-19)
+* WordPress version 4.8.2 operation check.
+
+### 2.0.2 (2017-09-12)
 * Plugin re-translation.
 
-###2.0.1 (2017-09-12) =
+### 2.0.1 (2017-09-12)
 * WordPress version 4.8.1 operation check.
 
-###2.0.0 (2017-07-23)
+### 2.0.0 (2017-07-23)
 * Added ability to display banner with short code
 * Change the display of the banner so that it can be selected by "display with limited by category" or "indication without categorization, unconditionally"
 
-###1.0.2 (2017-05-19)
+### 1.0.2 (2017-05-19)
 * WordPress version 4.7.5 operation check.
 
-###1.0.1 (2017-04-25)
+### 1.0.1 (2017-04-25)
 * WordPress version 4.7.4 operation check.
 
 ### 1.0.0 (2017-04-09)
