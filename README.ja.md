@@ -2,7 +2,7 @@
 - Contributors: Sararilfy
 - Tags: post, posts, category
 - Requires at least: 4.7.2
-- Tested up to: 4.8.1
+- Tested up to: 4.8.2
 - Stable tag: 2.0.3
 - License: GPLv2 or later
 
