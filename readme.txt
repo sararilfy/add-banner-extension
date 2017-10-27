@@ -73,7 +73,7 @@ Categories where articles are not published, it will not be displayed in the pul
 
 == Changelog ==
 
-= 2.0.2 (2017-10-19) =
+= 2.0.2 (2017-10-27) =
 * WordPress version 4.8.2 operation check.
 
 = 2.0.2 (2017-09-12) =
